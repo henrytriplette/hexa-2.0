@@ -1,0 +1,22 @@
+{
+  "name": "triplette-hexa-client",
+  "version": "0.0.1",
+  "description": "A web interface for Hexa hexapod",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrytriplette/hexa-2.0.git"
+  },
+  "keywords": [
+    "hexapod"
+  ],
+  "author": "Henry Triplette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrytriplette/hexa-2.0/issues"
+  },
+  "homepage": "https://github.com/henrytriplette/hexa-2.0#readme"
+}

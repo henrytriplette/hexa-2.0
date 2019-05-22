@@ -1,2 +1,5 @@
 server/venv/*
 client/node_modules/*
+
+_test/*
+_github/*

@@ -1,0 +1,8 @@
+<div id="blog-post">...</div>
+<script>
+  var me = document.currentScript.ownerDocument;
+  var post = me.querySelector('#blog-post');
+
+  var container = document.querySelector('#container');
+  container.appendChild(post.cloneNode(true));
+</script>

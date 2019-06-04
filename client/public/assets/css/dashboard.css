@@ -71,12 +71,12 @@
 	margin-left: -4px;
 }
 .left-content-box {
-	padding: 0.75rem 20px;
-	border-top: 1px solid rgba(255,255,255,0.06);
+	padding: 0;
+	border-top: none;
 	margin-bottom: -1px;
 }
 .left-nav-wrap {
-	padding-bottom: 60px;
+	padding-bottom: 10px;
 }
 .content-box-dark {
 	background-color: rgba(0,0,0,0.09);
@@ -88,13 +88,12 @@
 .bar-bottom {
 	border-top: 1px solid rgba(255,255,255,0.07);
 	padding: 15px 0;
-   background-color: #222A30;
-   position: fixed;
-   left: 0;
-   right: 0;
-   z-index: 3;
-   bottom: 0;
-   width: 240px;
+	position: relative;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	bottom: 0;
+	width: auto;
 }
 .left-logo {
 	/* navbar height */
@@ -133,7 +132,7 @@
 }
 
 #content {
-	margin-top: 52px;
+	margin-top: 25px;
 	padding: 30px 0 0 0;
 	background-color: #f7f7f7;
 	margin-left: 0;
@@ -142,11 +141,11 @@
 @media screen and (min-width: 960px){
 	#content {
 		/* equal to left-col width */
-		margin-left: 240px;
+		margin-left: 0;
 	}
 	#top-head {
 		/* equal to left-col width */
-		left:240px;
+		left: 0;
 	}
 }
 

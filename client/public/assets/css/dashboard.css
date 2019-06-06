@@ -131,6 +131,12 @@
   margin-bottom: 10px;
 }
 
+#serverOutput .gray { color: #50514f; }
+#serverOutput .red { color: #f25f5c; }
+#serverOutput .yellow { color: #ffe066; }
+#serverOutput .blue { color: #247ba0; }
+#serverOutput .green { color: #70c1b3; }
+
 #content {
 	margin-top: 25px;
 	padding: 30px 0 0 0;

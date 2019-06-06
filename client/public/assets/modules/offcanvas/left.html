@@ -27,30 +27,13 @@
   <div class="left-nav-wrap">
     <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
       <li class="uk-nav-header">ACTIONS</li>
-      <li><a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Messages</a></li>
-      <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
-      <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Templates</a>
-        <ul class="uk-nav-sub">
-          <li><a title="Article" href="https://zzseba78.github.io/Kick-Off/article.html">Article</a></li>
-          <li><a title="Album" href="https://zzseba78.github.io/Kick-Off/album.html">Album</a></li>
-          <li><a title="Cover" href="https://zzseba78.github.io/Kick-Off/cover.html">Cover</a></li>
-          <li><a title="Cards" href="https://zzseba78.github.io/Kick-Off/cards.html">Cards</a></li>
-          <li><a title="News Blog" href="https://zzseba78.github.io/Kick-Off/newsBlog.html">News Blog</a></li>
-          <li><a title="Price" href="https://zzseba78.github.io/Kick-Off/price.html">Price</a></li>
-          <li><a title="Login" href="https://zzseba78.github.io/Kick-Off/login.html">Login</a></li>
-          <li><a title="Login-Dark" href="https://zzseba78.github.io/Kick-Off/login-dark.html">Login - Dark</a></li>
-        </ul>
-      </li>
-      <li><a href="#"><span data-uk-icon="icon: album" class="uk-margin-small-right"></span>Albums</a></li>
-      <li><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Featured Content</a></li>
-      <li><a href="#"><span data-uk-icon="icon: lifesaver" class="uk-margin-small-right"></span>Tips</a></li>
-      <li class="uk-parent">
-        <a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Reports</a>
-        <ul class="uk-nav-sub">
-          <li><a href="#">Sub item</a></li>
-          <li><a href="#">Sub item</a></li>
-        </ul>
-      </li>
+      <li><a href="#" uk-toggle="target: #controls-main-body-top">Controls Up</a></li>
+      <li><a href="#" uk-toggle="target: #controls-main-body-bottom">Controls Down</a></li>
+
+      <li><a href="#" class="gimbalDisplayButton">Gimbal</a></li>
+      <li><a href="#" uk-toggle="target: #controls-toggle-content">Toggle</a></li>
+      <li><a href="#" uk-toggle="target: #controls-facetracking-content">Face Tracking</a></li>
+      <li><a href="#" uk-toggle="target: #controls-speech-content">Speech</a></li>
     </ul>
     <div class="left-content-box uk-margin-top">
 
@@ -64,19 +47,17 @@
   </div>
   <div class="bar-bottom">
     <ul class="uk-subnav uk-flex uk-flex-center uk-child-width-1-5" data-uk-grid>
-      <li>
-        <a href="#" class="uk-icon-link" data-uk-icon="icon: home" title="Home" data-uk-tooltip></a>
-      </li>
-      <li>
-        <a href="#" class="uk-icon-link" data-uk-icon="icon: settings" title="Settings" data-uk-tooltip></a>
-      </li>
-      <li>
-        <a href="#" class="uk-icon-link" data-uk-icon="icon: social"  title="Social" data-uk-tooltip></a>
-      </li>
 
       <li>
-        <a href="#" class="uk-icon-link" data-uk-tooltip="Sign out" data-uk-icon="icon: sign-out"></a>
+        <a href="#modal-reboot" uk-toggle title="Reboot"><i class="fas fa-redo"></i></a>
       </li>
+      <li>
+        <a href="#modal-poweroff" uk-toggle title="Power Off"><i class="fas fa-power-off"></i></a>
+      </li>
+
+      <!-- <li>
+        <a href="#" class="uk-icon-link" data-uk-tooltip="Sign out" data-uk-icon="icon: sign-out"></a>
+      </li> -->
     </ul>
   </div>
 </div>

@@ -15,7 +15,7 @@
   <meta name="msapplication-config" content="./assets/favicons/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
 
-  <title>Hera 2.0 Hexapod</title>
+  <title>Hera 2.0 Test</title>
 
   <!-- Fonts and icons -->
   <link href="./assets/css/font-poppins.css" rel="stylesheet" />
@@ -48,7 +48,6 @@
   <link href="./assets/modules/modals/help.html" rel="import" >
   <link href="./assets/modules/modals/links.html" rel="import" >
 
-
 </head>
 
 <body class="index-page">
@@ -70,19 +69,15 @@
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                   <li class="uk-nav-header">Controls</li>
-                    <li><a href="#" uk-toggle="target: #controls-main-body-top" title="Controls Up">Controls Up</a></li>
-                    <li><a href="#" uk-toggle="target: #controls-main-body-bottom" title="Controls Down">Controls Down</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-main-body-top">Controls Up</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-main-body-bottom">Controls Down</a></li>
                   <li class="uk-nav-divider"></li>
-                  <li class="uk-nav-header">Panels</li>
-                    <li><a href="#" class="gimbalDisplayButton" title="Gimbal">Gimbal</a></li>
-                    <li><a href="#" uk-toggle="target: #controls-toggle-content" title="Toggle">Toggle</a></li>
-                    <li><a href="#" uk-toggle="target: #controls-facetracking-content" title="Face Tracking">Face Tracking</a></li>
-                    <li><a href="#" uk-toggle="target: #controls-speech-content" title="Speech">Speech</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-gimbal-content">Gimbal</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-toggle-content">Toggle</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-facetracking-content">Face Tracking</a></li>
+                    <li><a href="#" uk-toggle="target: #controls-speech-content">Speech</a></li>                  <li class="uk-nav-divider"></li>
                   <li class="uk-nav-divider"></li>
-                  <li class="uk-nav-header">System</li>
-                    <li><a href="logout" title="Logout"><span data-uk-icon="icon: sign-out"></span> Logout</a></li>
-                    <li><a href="#modal-reboot" uk-toggle title="Reboot"><i class="fas fa-redo"></i> Reboot</a></li>
-                    <li><a href="#modal-poweroff" uk-toggle title="Power Off"><i class="fas fa-power-off"></i> Power Off</a></li>
+                  <li><a href="#"><span data-uk-icon="icon: sign-out"></span> Logout</a></li>
                 </ul>
               </div>
             </li>
@@ -90,7 +85,7 @@
         </div>
         <div class="uk-navbar-right">
           <ul class="uk-navbar-nav">
-            <li><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-right" title="Offcanvas Right" data-uk-tooltip></a></li>
+            <li><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-right" title="Offcanvas" data-uk-tooltip></a></li>
           </ul>
         </div>
       </nav>
@@ -109,10 +104,6 @@
       <div id="controls-facetracking"></div>
       <div id="controls-speech"></div>
 
-      <footer class="uk-section uk-section-small uk-text-center">
-        <hr>
-        <p class="uk-text-small uk-text-center">Created by <a href="https://triplette.it">Henry Triplette</a> | Way our waves radiate strong </p>
-      </footer>
     </div>
   </div>
   <!-- /CONTENT -->
@@ -141,12 +132,9 @@
     <script src="./assets/lib/uikit/js/uikit.min.js" type="text/javascript"></script>
     <script src="./assets/lib/uikit/js/uikit-icons.min.js" type="text/javascript"></script>
 
-    <!--   Utility JS Files   -->
-    <!-- <script src="./assets/js/utility/conversions.js" type="text/javascript"></script>
-    <script src="./assets/js/utility/easing.js" type="text/javascript"></script> -->
-
     <!--   Plugins JS Files   -->
     <script src="./assets/lib/nipplejs/dist/nipplejs.js"></script>
+
     <script src="./assets/lib/socket.io/dist/socket.io.js" type="text/javascript"></script>
 
     <!--   Face Detection   -->
@@ -158,11 +146,9 @@
 
       import { HERAui } from './assets/js/ui/HERAui.js';
       import { HERAJoystick } from './assets/js/ui/HERAJoystick.js';
-      import { HERAGimbal } from './assets/js/ui/HERAGimbal.js';
 
       const heraui = new HERAui(socket);
       const herajoystick = new HERAJoystick(socket)
-      const heragimbal = new HERAGimbal(socket)
 
       // jQuery(document).ready(function() {
       // })

@@ -130,7 +130,7 @@ export class HERAGimbal {
             jQuery('#gimbalValueX').html("0.0")
             jQuery('#gimbalValueY').html("0.0")
 
-            TweenMax.to(window.gimbalAxis, 5, {
+            TweenMax.to(window.gimbalAxis, 2.5, {
 
               x: window.gimbalAxis.xTrim,
               y: window.gimbalAxis.yTrim,

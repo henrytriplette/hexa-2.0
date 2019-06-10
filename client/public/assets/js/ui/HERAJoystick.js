@@ -45,7 +45,7 @@ export class HERAJoystick {
     socketEmitButton (buttonElement) {
       var socketToEmit = jQuery(buttonElement).data('socket');
       if (socketToEmit != null) {
-        console.log('socketEmitButton', button);
+        jQuery('#serverOutput').append('<span class="yellow">' + socketToEmit + ':' + socketToEmit + '</span>')
       }
     }
 

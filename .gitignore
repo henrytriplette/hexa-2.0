@@ -3,3 +3,8 @@ client/node_modules/*
 
 _test/*
 _github/*
+
+*.wav
+*.mp3
+
+server/test.py

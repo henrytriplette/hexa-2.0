@@ -131,6 +131,10 @@
   margin-bottom: 10px;
 }
 
+#serverOutput span {
+  display: table;
+}
+
 #serverOutput .gray { color: #50514f; }
 #serverOutput .red { color: #f25f5c; }
 #serverOutput .yellow { color: #ffe066; }

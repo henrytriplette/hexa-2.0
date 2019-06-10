@@ -116,6 +116,19 @@
 }
 /* -- /Joystick -- */
 
+/* -- Audio -- */
+#speechAudioFileList .uk-text-small {
+    font-size: .475rem;
+    line-height: .75rem;
+}
+
+#speechAudioFileList h5 {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+/* -- /Audio -- */
+
 /* -- Cam -- */
 .livecam-container {
   min-height: 258px;

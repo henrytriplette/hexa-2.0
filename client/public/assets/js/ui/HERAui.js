@@ -10,12 +10,16 @@ export class HERAui {
 
       // Connect
       socket.on('connect', () => {
-          socket.emit('client_connected', { client_connected: true });
+          socket.emit('client_connected', JSON.stringify({ client_connected: true }));
+          UIkit.notification({message: 'Connected with server', pos: 'top-right', status: 'success'})
+          jQuery('#serverOutput').append('<span class="green">Connected with server</span>')
       });
 
       // Disconnect
       socket.on('disconnect', () => {
-        console.log('Lost connection to the server');
+        UIkit.notification({message: 'Connection Lost. Attempting to reconnect', pos: 'top-right', status: 'danger'})
+        jQuery('#serverOutput').append('<span class="red">Connection Lost. Attempting to reconnect</span>')
+
         socket.open();
       });
 

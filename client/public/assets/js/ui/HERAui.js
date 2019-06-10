@@ -33,6 +33,9 @@ export class HERAui {
         jQuery('#serverOutput').append('<span class="gray">' + msg + '</span>')
       });
 
+      // Init Cams
+      this.camStart()
+
       if (document.getElementById('button-ui-shoutdown') != null ) {
           document.getElementById('button-ui-shoutdown').addEventListener('click',  this.uiShoutdown.bind(this));
       }
@@ -53,6 +56,18 @@ export class HERAui {
       UIkit.notification({message: 'Rebooting now...\nPlease wait 20s before trying to reconnect.', status: 'warning'})
       jQuery('#serverOutput').append('<span class="red">' + msg + '</span>')
       this.socket.emit('reboot', '{ reboot: true }');
+    }
+
+    camStart() {
+      const host = window.location.hostname;
+      var img = 'http://' + host + ':9000/?action=stream';
+      jQuery('#livecam').attr('src',img)
+
+      var imgFace = 'http://' + host + ':9000/?action=snapshot';
+      jQuery('#livecam_faceTracking').attr('src',imgFace)
+
+      var img_2 = 'http://' + host + ':9001';
+      jQuery('#livecam_2').attr('src',img_2)
     }
 
 }

@@ -68,7 +68,6 @@ export class HERASpeech {
     }
 
     generateList(input) {
-
       var frag = document.createDocumentFragment();
       for (var i = 0; i < this.audioFilefilteredList.length; i++) {
         if (i < this.audioFilemaxDisplayLimit) {

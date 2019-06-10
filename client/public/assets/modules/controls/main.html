@@ -16,7 +16,7 @@
         <div class="uk-child-width-expand@s uk-text-center" uk-grid>
             <div class="uk-width-1-4">
 
-              <div class="uk-child-width-1-3@s uk-child-width-1-3@m uk-child-width-1-3@l uk-text-center uk-grid-collapse" uk-grid>
+              <div class="uk-child-width-1-3@s uk-child-width-1-3@m uk-child-width-1-3@l uk-text-center uk-grid-collapse centerElement" uk-grid>
                   <div>
                       <div class="uk-card uk-card-default "></div>
                   </div>
@@ -39,7 +39,7 @@
                   </div>
                   <div>
                       <div class="uk-card uk-card-default ">
-                        <button class="socketEmitButton uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" data-socket="SERB_ZERO_PAD">ZERO</button>
+                        <button class="socketEmitButton uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" data-socket="SERB_ZERO_PAD">X</button>
                       </div>
                   </div>
                   <div>
@@ -95,7 +95,7 @@
             </div>
             <div class="uk-width-1-4">
 
-              <div class="uk-child-width-1-3@s uk-child-width-1-3@m uk-child-width-1-3@l uk-text-center uk-grid-collapse" uk-grid>
+              <div class="uk-child-width-1-3@s uk-child-width-1-3@m uk-child-width-1-3@l uk-text-center uk-grid-collapse centerElement" uk-grid>
                   <div>
                       <div class="uk-card uk-card-default "></div>
                   </div>
@@ -167,7 +167,9 @@
         <div class="uk-child-width-expand@s uk-text-center uk-grid-small" uk-grid>
             <div>
                 <div id="leftJoystick" class="uk-background-muted uk-padding-remove uk-height-medium joystick-thumb">
-                  <div id="debugLeft" class="joystick-debug">
+                  <span class="uk-badge uk-position-top-center" id="leftValueX">128</span>
+                  <span class="uk-badge uk-position-center-right" id="leftValueY">128</span>
+                  <!-- <div id="debugLeft" class="joystick-debug">
                     <ul>
                       <li class="position">
                         position :
@@ -196,7 +198,7 @@
                       </li>
                     </ul>
                     <div class="dump"></div>
-                  </div>
+                  </div> -->
 
                 </div>
             </div>
@@ -223,7 +225,9 @@
             </div>
             <div>
                 <div id="rightJoystick" class="uk-background-muted uk-padding-remove uk-height-medium joystick-thumb">
-                  <div id="debugRight" class="joystick-debug">
+                  <span class="uk-badge uk-position-top-center" id="rightValueX">128</span>
+                  <span class="uk-badge uk-position-center-right" id="rightValueY">128</span>
+                  <!-- <div id="debugRight" class="joystick-debug">
                     <ul>
                       <li class="position">
                         position :
@@ -252,7 +256,7 @@
                       </li>
                     </ul>
                     <div class="dump"></div>
-                  </div>
+                  </div> -->
 
                 </div>
             </div>

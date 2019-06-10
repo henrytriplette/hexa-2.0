@@ -1,3 +1,9 @@
+/* -- Main Container -- */
+.index-page {
+  font-family: 'IBM Plex Sans', sans-serif;
+  overflow-x: hidden;
+}
+
 /* -- Top navigation -- */
 #top-head {
 	z-index: 9;

@@ -1,4 +1,12 @@
 
+/* -- Uitlity Classes -- */
+.centerElement {
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+}
+
+
 /* -- Joystick -- */
 .joystick-thumb {
   position: relative;

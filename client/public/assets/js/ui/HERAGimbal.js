@@ -10,6 +10,15 @@ export class HERAGimbal {
       this.gimbalContainerVisibility = false;
       this.gimbalController = false;
 
+      this.timeline = new TimelineMax({
+        repeat:-1,
+        repeatDelay: 0.25,
+        onRepeat:function() {
+          console.log('playGimbal', window.gimbalAxis);
+          socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
+        }
+      }).pause();
+
       window.gimbalAxis = {
         'x': 0,
         'y': 0,
@@ -45,21 +54,21 @@ export class HERAGimbal {
 
             if (input.gimbalContainerVisibility == true) {
               jQuery('#controls-gimbal-content').removeClass('uk-hidden');
-              input.createGimbalController()
+              input.createGimbalController(input)
             } else {
               jQuery('#controls-gimbal-content').addClass('uk-hidden');
-              input.destroyGimbalController()
+              input.destroyGimbalController(input)
             }
           });
       });
     }
 
-    destroyGimbalController() {
+    destroyGimbalController(input) {
       // console.log('destroyGimbalController');
       this.gimbalController.destroy();
     }
 
-    createGimbalController() {
+    createGimbalController(input) {
       // console.log('createGimbalController');
 
       this.gimbalController = nipplejs.create({
@@ -73,10 +82,10 @@ export class HERAGimbal {
           // lockY: true
       });
 
-      this.bindGimbalNipple();
+      this.bindGimbalNipple(input);
     }
 
-    bindGimbalNipple() {
+    bindGimbalNipple(input) {
 
       this.gimbalController
         .on('move start end', function(event, data, parent) {
@@ -89,7 +98,7 @@ export class HERAGimbal {
 
             // Avoid exeeding max and min value on axis
             if (window.gimbalAxis.xMin < x && x < window.gimbalAxis.xMax) {
-              window.gimbalAxis.x = x;
+              window.gimbalAxis.x = parseFloat(x);
             } else {
               if (x > 0) {
                 window.gimbalAxis.x = window.gimbalAxis.xMax
@@ -99,7 +108,7 @@ export class HERAGimbal {
             }
 
             if (window.gimbalAxis.yMin < y && y < window.gimbalAxis.yMax) {
-              window.gimbalAxis.y = y;
+              window.gimbalAxis.y = parseFloat(y);
             } else {
               if (y > 0) {
                 window.gimbalAxis.y = window.gimbalAxis.yMax
@@ -123,14 +132,14 @@ export class HERAGimbal {
 
           } else if(event.type === "start") {
             // pressed = true;
-
+            input.timeline.play();
           } else if(event.type === "end") {
             // pressed = false;
 
             jQuery('#gimbalValueX').html("0.0")
             jQuery('#gimbalValueY').html("0.0")
 
-            TweenMax.to(window.gimbalAxis, 2.5, {
+            TweenMax.to(window.gimbalAxis, 1.5, {
 
               x: window.gimbalAxis.xTrim,
               y: window.gimbalAxis.yTrim,
@@ -145,6 +154,10 @@ export class HERAGimbal {
                 jQuery('#gimbalYdisplay progress').val(displayValueY)
                 jQuery('#gimbalYdisplay small').html('(' + (window.gimbalAxis.y).toFixed(1) + ')')
 
+              },
+
+              onComplete:function() {
+                input.timeline.pause();
               }
             });
 

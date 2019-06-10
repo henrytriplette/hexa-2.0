@@ -5,6 +5,9 @@ import json
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 
+# Custom Libs and functions
+import settings
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
@@ -53,7 +56,17 @@ def handle_text_to_speech(line):
 def handle_play_audio(play_data):
     play_data = sanitizeJson(play_data)
     print('Hera Plays: ', str(play_data))
-    
+
+@socketio.on('playJoystick')
+def handle_play_joystick(joy_data):
+    joy_data = sanitizeJson(joy_data)
+    print(joy_data)
+
+@socketio.on('playGimbal')
+def handle_play_gimbal(gimbal_data):
+    gimbal_data = sanitizeJson(gimbal_data)
+    print(gimbal_data)
+
 def loadAndSendContent(jsonFile, emitName):
     print('Loading:', jsonFile)
     with open(jsonFile) as f:
@@ -76,4 +89,8 @@ def sanitizeJson(input):
     return json.loads(output)
 
 if __name__ == '__main__':
+
+    # Init settings
+    settings.init()
+
     socketio.run(app)

@@ -6,11 +6,44 @@ export class HERAJoystick {
      */
     constructor(socket) {
 
-      this.socket = socket
+      this.socket = socket;
+
+      this.timeline = new TimelineMax({
+        repeat:-1,
+        repeatDelay: 0.25,
+        onRepeat:function() {
+          console.log('playJoystick', window.controllerAxis);
+          socket.emit('playJoystick', JSON.stringify(window.controllerAxis));
+        }
+      }).pause();
+
+      window.controllerAxis = {
+        left: {
+          'x': 128,
+          'y': 128,
+          'xTrim': 0,
+          'yTrim': 0,
+          'xMax': 256,
+          'xMin': 0,
+          'yMax': 256,
+          'yMin': 0
+        },
+        right: {
+          'x': 128,
+          'y': 128,
+          'xTrim': 0,
+          'yTrim': 0,
+          'xMax': 256,
+          'xMin': 0,
+          'yMax': 256,
+          'yMin': 0
+        }
+      }
 
       this.leftController = nipplejs.create({
           zone: document.getElementById('leftJoystick'),
-          mode: 'semi',
+          mode: 'static',
+          position: {left: '50%', top: '50%'},
           size: 256,
           catchDistance: 150,
           color: 'white',
@@ -20,7 +53,8 @@ export class HERAJoystick {
 
       this.rightController = nipplejs.create({
           zone: document.getElementById('rightJoystick'),
-          mode: 'semi',
+          mode: 'static',
+          position: {left: '50%', top: '50%'},
           size: 256,
           catchDistance: 150,
           color: 'white',
@@ -28,10 +62,14 @@ export class HERAJoystick {
           // lockX: true
       });
 
-      this.bindNipples();
+      this.bindNipples(this);
 
       this.bindButtons(this);
 
+    }
+
+    sendData(input) {
+      console.log(input);
     }
 
     bindButtons(input) {
@@ -49,51 +87,88 @@ export class HERAJoystick {
       }
     }
 
-    bindNipples () {
+    bindNipples (input) {
 
       this.leftController
-        .on('start end', function(evt, data) {
+      .on('move start end', function(event, data, parent) {
 
-          console.log('-- end left --');
-          console.log('data', data);
+        if(event.type === "move") {
+          var force = 100; // 0.08 * data.force; // Just disable the force parameter
 
-      })
-      .on('move', function(evt, data) {
+          var x = (parseFloat(Math.cos(data.angle.radian) * force) + window.controllerAxis.left.xTrim).toFixed(1);
+          var y = (parseFloat(Math.sin(data.angle.radian) * force) + window.controllerAxis.left.yTrim).toFixed(1);
 
-        if(data && data.direction && data.direction.angle) {
-          console.log('data', data);
+          window.controllerAxis.left.x = (convertRange( x, [ -100, 100 ], [ 0, 256 ] )).toFixed();
+          window.controllerAxis.left.y = (convertRange( y, [ -100, 100 ], [ 0, 256 ] )).toFixed();
+
+          // Display values
+          jQuery('#leftValueX').html(window.controllerAxis.left.x);
+          jQuery('#leftValueY').html(window.controllerAxis.left.y);
+
+        } else if(event.type === "start") {
+          // pressed = true;
+          input.timeline.play();
+
+        } else if(event.type === "end") {
+
+          TweenMax.to(window.controllerAxis.left, 1.5, {
+
+            x: 128,
+            y: 128,
+
+            onUpdate:function() {
+              // Display values
+              jQuery('#leftValueX').html((window.controllerAxis.left.x).toFixed());
+              jQuery('#leftValueY').html((window.controllerAxis.left.y).toFixed());
+            },
+
+            onComplete:function() {
+              input.timeline.pause();
+            }
+          });
+
         }
-
       })
-      .on('dir:up plain:up dir:left plain:left dir:down plain:down dir:right plain:right', function(evt, data) {
-        console.log('dir', data);
-      })
-
-      .on('pressure', function(evt, data) {
-        console.log('pressure', data);
-      });
 
       this.rightController
-        .on('start end', function(evt, data) {
+      .on('move start end', function(event, data, parent) {
 
-          console.log('-- end right --');
-          console.log('data', data);
+        if(event.type === "move") {
+          var force = 100; // 0.08 * data.force; // Just disable the force parameter
 
-      })
-      .on('move', function(evt, data) {
+          var x = (parseFloat(Math.cos(data.angle.radian) * force) + window.controllerAxis.right.xTrim).toFixed(1);
+          var y = (parseFloat(Math.sin(data.angle.radian) * force) + window.controllerAxis.right.yTrim).toFixed(1);
 
-        if(data && data.direction && data.direction.angle) {
-          console.log('data', data);
+          window.controllerAxis.right.x = (convertRange( x, [ -100, 100 ], [ 0, 256 ] )).toFixed(0);
+          window.controllerAxis.right.y = (convertRange( y, [ -100, 100 ], [ 0, 256 ] )).toFixed(0);
+
+          // Display values
+          jQuery('#rightValueX').html(window.controllerAxis.right.x);
+          jQuery('#rightValueY').html(window.controllerAxis.right.y);
+
+        } else if(event.type === "start") {
+          // pressed = true;
+          input.timeline.play();
+        } else if(event.type === "end") {
+
+          TweenMax.to(window.controllerAxis.right, 1.5, {
+
+            x: 128,
+            y: 128,
+
+            onUpdate:function() {
+              // Display values
+              jQuery('#rightValueX').html((window.controllerAxis.right.x).toFixed());
+              jQuery('#rightValueY').html((window.controllerAxis.right.y).toFixed());
+            },
+
+            onComplete:function() {
+              input.timeline.pause();
+            }
+          });
+
         }
-
       })
-      .on('dir:up plain:up dir:left plain:left dir:down plain:down dir:right plain:right', function(evt, data) {
-        console.log('dir', data);
-      })
-
-      .on('pressure', function(evt, data) {
-        console.log('pressure', data);
-      });
 
     }
 

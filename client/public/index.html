@@ -48,6 +48,7 @@
   <link href="./assets/modules/modals/help.html" rel="import" >
   <link href="./assets/modules/modals/links.html" rel="import" >
 
+  <link href="./assets/modules/effects/effects.html" rel="import" >
 
 </head>
 
@@ -136,6 +137,10 @@
   <div id="modal-links" class="uk-modal-full" uk-modal></div>
   <!-- /MODALS -->
 
+  <!-- EFFECTS -->
+  <div id="effects-content"></div>
+  <!-- /EFFECTS -->
+
     <!--   Core JS Files   -->
     <script src="./assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="./assets/lib/uikit/js/uikit.min.js" type="text/javascript"></script>
@@ -151,8 +156,7 @@
     <script src="./assets/lib/nipple.js/dist/nipplejs.js"></script>
     <script src="./assets/lib/greensock.js/src/minified/TweenMax.min.js"></script>
     <script src="./assets/lib/socket.io/dist/socket.io.js" type="text/javascript"></script>
-
-    <!--   Face Detection   -->
+    <script src="./assets/lib/paper.js/0.12.0/paper-core.min.js" type="text/javascript"></script>
 
     <!--   Controls Files   -->
     <script type="module">
@@ -165,6 +169,7 @@
       import { HERAToggle } from './assets/js/ui/HERAToggle.js';
       import { HERASpeech } from './assets/js/ui/HERASpeech.js';
       import { HERAFaceTracking } from './assets/js/ui/HERAFaceTracking.js';
+      import { HERAEffects } from './assets/js/ui/HERAEffects.js';
 
       const heraui = new HERAui(socket);
       const herajoystick = new HERAJoystick(socket)
@@ -172,6 +177,7 @@
       const heratoggle = new HERAToggle(socket)
       const heraspeech = new HERASpeech(socket)
       const herafacetracking = new HERAFaceTracking(socket)
+      const heraeffects = new HERAEffects(socket)
 
       // jQuery(document).ready(function() {
       // })

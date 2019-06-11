@@ -19,9 +19,10 @@ export class HERAFaceTracking {
       this.imgFace = 'http://' + this.host + ':9000/?action=snapshot';
       this.hFaceTracking = false;
 
-      // Init Facetracking
+      // Init Loading Facetracking resources
       this.faceApiInit()
 
+      // Bind button toggle
       this.bindFaceTrackingToggle(this);
     }
 
@@ -70,8 +71,6 @@ export class HERAFaceTracking {
 
       window.faceapi.draw.drawFaceExpressions(canvas, resizedResults.map(({ detection, expressions }) => ({ position: detection.box, expressions })))
     }
-
-    ////////////////////////// The 2 Main functions ///////////////////////////////////////////
 
     async run() {
 
@@ -136,6 +135,7 @@ export class HERAFaceTracking {
     handleFaceTracking(element) {
 
       if (element.srcElement.checked == true) {
+        jQuery('#serverOutput').append('<span class="yellow">Facetracking Initialized</span>')
     		// Turn on FaceTracking
         if (this.timer !== null) return;
         this.timer = setInterval(function (element) {
@@ -146,6 +146,7 @@ export class HERAFaceTracking {
         }, this.interval);
 
       } else {
+        jQuery('#serverOutput').append('<span class="yellow">Facetracking Stopped</span>')
     		// Turn off FaceTracking
         jQuery('#overlay').addClass('paused')
         clearInterval(this.timer);
@@ -153,11 +154,4 @@ export class HERAFaceTracking {
 
       }
     }
-
-    // uiShoutdown () {
-    //   UIkit.notification({message: 'Shutting down...\nPlease wait 20s before turning the power off.', status: 'warning'})
-    //   jQuery('#serverOutput').append('<span class="red">' + msg + '</span>')
-    //   this.socket.emit('shoutdown', '{ shoutdown: true }');
-    // }
-
 }

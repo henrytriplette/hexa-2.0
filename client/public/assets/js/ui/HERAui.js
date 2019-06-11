@@ -44,6 +44,10 @@ export class HERAui {
           document.getElementById('button-ui-reboot').addEventListener('click',  this.uiReboot.bind(this));
       }
 
+      if (document.getElementById('button-ui-dark') != null ) {
+          document.getElementById('button-ui-dark').addEventListener('click',  this.uiDark.bind(this));
+      }
+
     }
 
     uiShoutdown () {
@@ -56,6 +60,22 @@ export class HERAui {
       UIkit.notification({message: 'Rebooting now...\nPlease wait 20s before trying to reconnect.', status: 'warning'})
       jQuery('#serverOutput').append('<span class="red">' + msg + '</span>')
       this.socket.emit('reboot', '{ reboot: true }');
+    }
+
+    uiDark () {
+      if ( !jQuery('body').hasClass('darkTheme') ) {
+        jQuery('body').addClass('darkTheme');
+        jQuery('#serverOutput').append('<span class="green">Dark Skin: On</span>');
+        jQuery('#button-ui-dark').html('<i class="fas fa-lightbulb"></i>')
+      } else {
+        jQuery('body').removeClass('darkTheme');
+        jQuery('#serverOutput').append('<span class="red">Dark Skin: Off</span>');
+        jQuery('#button-ui-dark').html('<i class="far fa-lightbulb"></i>')
+      }
+
+
+
+
     }
 
     camStart() {

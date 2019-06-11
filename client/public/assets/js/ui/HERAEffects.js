@@ -28,7 +28,7 @@ export class HERAEffects {
 
     initCursor() {
 
-      jQuery('body').addClass('noCursor darkTheme');
+      jQuery('body').addClass('noCursor');
 
       // add listener to track the current mouse position
       document.addEventListener("mousemove", e => {
@@ -55,12 +55,12 @@ export class HERAEffects {
     initCanvas() {
       const canvas = document.querySelector(".cursor--canvas");
       const shapeBounds = {
-        width: 75,
-        height: 75
+        width: 55,
+        height: 55
       };
       paper.setup(canvas);
-      const strokeColor = "rgba(255, 0, 0, 0.5)";
-      const strokeWidth = 1;
+      const strokeColor = "rgba(128, 128, 128, 0.5)";
+      const strokeWidth = 3;
       const segments = 8;
       const radius = 15;
 

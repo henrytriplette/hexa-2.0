@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "run": "node index.js"
+    "run": "node index.js",
+    "css": "sass --watch public/assets/sass:public/assets/css"
   },
   "repository": {
     "type": "git",

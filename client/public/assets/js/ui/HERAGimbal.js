@@ -14,7 +14,7 @@ export class HERAGimbal {
         repeat:-1,
         repeatDelay: 0.25,
         onRepeat:function() {
-          console.log('playGimbal', window.gimbalAxis);
+          // console.log('playGimbal', window.gimbalAxis);
           socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
         }
       }).pause();
@@ -173,6 +173,8 @@ export class HERAGimbal {
 
       let displayValue = convertRange( window.gimbalAxis.xTrim, [ -100, 100 ], [ 0, 100 ] );
       jQuery('#gimbalTrimXdisplay progress').val(displayValue)
+
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
     }
 
     trimGimbalY () {
@@ -182,6 +184,8 @@ export class HERAGimbal {
 
       let displayValue = convertRange( window.gimbalAxis.yTrim, [ -100, 100 ], [ 0, 100 ] );
       jQuery('#gimbalTrimYdisplay progress').val(displayValue)
+
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
     }
 
 
@@ -198,6 +202,8 @@ export class HERAGimbal {
 
       jQuery('#gimbalTrimYdisplay small').html('(0)')
       jQuery('#gimbalTrimYdisplay progress').val('50')
+
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
 
     }
 

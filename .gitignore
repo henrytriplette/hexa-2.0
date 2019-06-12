@@ -1,5 +1,6 @@
 server/venv/*
 server/__pycache__/*
+server/modules/__pycache__
 client/node_modules/*
 
 _test/*

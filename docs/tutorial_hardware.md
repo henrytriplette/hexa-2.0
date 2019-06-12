@@ -1,4 +1,14 @@
-Relay board:
+# Ports
+
+i2c [Hexapod] 1 channel
+Gpio [Relay Board] 4 channel
+Pwm [Gimbal] 4 channel
+
+# Hexapod [I2C]
+
+
+
+# Relay board [GPIO]
 
 To do correct connection, remove GND and 5V line.
 Maintain rest of connections.
@@ -10,6 +20,14 @@ Remember, relay are activated by low level logic.
 3v3, high level, relay deactivated.
 0V, low level, relay activated.
 
-sudo apt-get install python-rpi.gpio python3-rpi.gpio
-
 https://www.youtube.com/watch?v=b6ZagKRnRdM&list=PLYsmShE55_Eo_Pcc6GLP4xRGETEj_fvPV&index=2&t=4s
+
+# Gimbal [PWM]
+
+Note that the audio jack output also uses PWM 0 and PWM 1, so you can't have audio output on that socket and use the PWMs at the same time.
+
+# Libs:
+
+https://github.com/vsergeev/python-periphery
+
+sudo apt-get install python-rpi.gpio python3-rpi.gpio

@@ -12,7 +12,7 @@ export class HERAJoystick {
         repeat:-1,
         repeatDelay: 0.25,
         onRepeat:function() {
-          console.log('playJoystick', window.controllerAxis);
+          // console.log('playJoystick', window.controllerAxis);
           socket.emit('playJoystick', JSON.stringify(window.controllerAxis));
         }
       }).pause();
@@ -68,10 +68,6 @@ export class HERAJoystick {
 
     }
 
-    sendData(input) {
-      console.log(input);
-    }
-
     bindButtons(input) {
       jQuery(".socketEmitButton").each(function(index, element) {
           jQuery(element).on( "click", function() {
@@ -84,6 +80,7 @@ export class HERAJoystick {
       var socketToEmit = jQuery(buttonElement).data('socket');
       if (socketToEmit != null) {
         jQuery('#serverOutput').append('<span class="yellow">' + socketToEmit + ':' + socketToEmit + '</span>')
+        this.socket.emit('playButton', JSON.stringify({ button: socketToEmit }));
       }
     }
 

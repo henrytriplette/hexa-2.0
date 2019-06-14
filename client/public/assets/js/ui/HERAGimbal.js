@@ -42,6 +42,10 @@ export class HERAGimbal {
           document.getElementById('gimbalTrimReset').addEventListener('click',  this.gimbalTrimReset.bind(this));
       }
 
+      if (document.getElementById('gimbalRecalibrate') != null ) {
+          document.getElementById('gimbalRecalibrate').addEventListener('click',  this.gimbalRecalibrate.bind(this));
+      }
+
       this.bindGimbalButtons(this);
     }
 
@@ -167,32 +171,31 @@ export class HERAGimbal {
     }
 
     trimGimbalX () {
-      window.gimbalAxis.xTrim = parseFloat(jQuery('#gimbalTrimX').val())
+      window.gimbalAxis.x = window.gimbalAxis.xTrim = parseFloat(jQuery('#gimbalTrimX').val())
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
 
       jQuery('#gimbalTrimXdisplay small').html('(' + window.gimbalAxis.xTrim + ')')
 
       let displayValue = convertRange( window.gimbalAxis.xTrim, [ -100, 100 ], [ 0, 100 ] );
       jQuery('#gimbalTrimXdisplay progress').val(displayValue)
-
-      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
     }
 
     trimGimbalY () {
-      window.gimbalAxis.yTrim = parseFloat(jQuery('#gimbalTrimY').val())
+      window.gimbalAxis.y = window.gimbalAxis.yTrim = parseFloat(jQuery('#gimbalTrimY').val())
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
 
       jQuery('#gimbalTrimYdisplay small').html('(' + window.gimbalAxis.yTrim + ')')
 
       let displayValue = convertRange( window.gimbalAxis.yTrim, [ -100, 100 ], [ 0, 100 ] );
       jQuery('#gimbalTrimYdisplay progress').val(displayValue)
-
-      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
     }
 
 
     gimbalTrimReset () {
 
-      window.gimbalAxis.xTrim = 0;
-      window.gimbalAxis.yTrim = 0;
+      window.gimbalAxis.x = window.gimbalAxis.xTrim = 0;
+      window.gimbalAxis.y = window.gimbalAxis.yTrim = 0;
+      this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
 
       jQuery('#gimbalTrimX').val(0).change()
       jQuery('#gimbalTrimY').val(0).change()
@@ -203,7 +206,25 @@ export class HERAGimbal {
       jQuery('#gimbalTrimYdisplay small').html('(0)')
       jQuery('#gimbalTrimYdisplay progress').val('50')
 
+
+
+    }
+
+    gimbalRecalibrate() {
+
+      window.gimbalAxis.x = window.gimbalAxis.xTrim = 0;
+      window.gimbalAxis.y = window.gimbalAxis.yTrim = 0;
       this.socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
+      this.socket.emit('recalibrateGimbal', JSON.stringify(window.gimbalAxis));
+
+      jQuery('#gimbalTrimX').val(0).change()
+      jQuery('#gimbalTrimY').val(0).change()
+
+      jQuery('#gimbalTrimXdisplay small').html('(0)')
+      jQuery('#gimbalTrimXdisplay progress').val('50')
+
+      jQuery('#gimbalTrimYdisplay small').html('(0)')
+      jQuery('#gimbalTrimYdisplay progress').val('50')
 
     }
 

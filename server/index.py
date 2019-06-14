@@ -53,12 +53,22 @@ socketio.on_event('playAudio', speech.handle_play_audio, namespace='/')
 socketio.on_event('playJoystick', joystick.handle_play_joystick, namespace='/')
 socketio.on_event('playButton', joystick.handle_play_button, namespace='/')
 
-
 socketio.on_event('playGimbal', gimbal.handle_play_gimbal, namespace='/')
+socketio.on_event('recalibrateGimbal', gimbal.handle_recalibrate_gimbal, namespace='/')
+
 
 if __name__ == '__main__':
 
     # Init settings
     settings.init()
+
+    # Init and reserve Relais Pins [GPIO]
+    toggle.init_toggle()
+
+    # Init and reserve Gimbal Pins [PWM]
+    gimbal.init_gimbal()
+
+    # Init and reserve Joystik Pins [I2C]
+    joystick.init_joystick()
 
     socketio.run(app, debug=False, use_reloader=True)

@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # Handle all toggle
 
-# from periphery import GPIO
+# import RPi.GPIO as GPIO
 
 from modules import utility
 
 import settings
+
+def init_toggle():
+    print('init_toggle')
 
 def handle_toggle_change(read_toggle):
     toggle_data = utility.sanitizeJson(read_toggle)
@@ -23,10 +26,12 @@ def handle_toggle_change(read_toggle):
 
 def toggleGpio(pin, toggleStatus):
     print(pin, toggleStatus)
+    
     # Open GPIO pin with output direction
-    gpio_out = GPIO(pin, "out")
-    gpio_out.write(toggleStatus)
-    gpio_out.close()
+    GPIO.setmode(settings.GPIOMODE)
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, toggleStatus)
+    GPIO.cleanup()
 
 if __name__=="__main__":
     pass

@@ -18,3 +18,5 @@
     playButton
 
     playGimbal
+
+    camStart

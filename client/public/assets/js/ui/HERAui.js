@@ -79,6 +79,9 @@ export class HERAui {
     }
 
     camStart() {
+
+      this.socket.emit('camStart', '{ cam: true }');
+
       const host = window.location.hostname;
       var img = 'http://' + host + ':9000/?action=stream';
       jQuery('#livecam').attr('src',img)

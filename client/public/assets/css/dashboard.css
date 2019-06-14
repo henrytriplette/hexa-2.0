@@ -6,7 +6,7 @@
 
 /* -- Top navigation -- */
 #top-head {
-  z-index: 9;
+  z-index: 1000;
   top: 0;
   left: 0;
   right: 0;

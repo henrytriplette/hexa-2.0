@@ -19,7 +19,7 @@ from modules import utility
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app, logger = False)
+socketio = SocketIO(app)
 
 @socketio.on('client_log')
 def handle_message(message):
@@ -42,6 +42,9 @@ def handle_reboot(message):
     print('Init reboot: ' + message)
     os.system('sudo reboot -r now')
 
+
+socketio.on_event('camStart', hexapod.handle_camera_start, namespace='/')
+
 socketio.on_event('toggle', toggle.handle_toggle_change, namespace='/')
 
 socketio.on_event('playSpeech', speech.handle_text_to_speech, namespace='/')
@@ -58,4 +61,4 @@ if __name__ == '__main__':
     # Init settings
     settings.init()
 
-    socketio.run(app)
+    socketio.run(app, debug=False, use_reloader=True)

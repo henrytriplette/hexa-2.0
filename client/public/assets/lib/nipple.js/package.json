@@ -1,0 +1,89 @@
+{
+  "_from": "nipplejs",
+  "_id": "nipplejs@0.8.2",
+  "_inBundle": false,
+  "_integrity": "sha512-WcVfU1fDseq0RTak9mKQSsHvA1qZ1z8kyNo5qHqBE/mgKKgkWP8VFHwCF1GpQIitk743gcffjA5IcBWpa/VGFg==",
+  "_location": "/nipplejs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "nipplejs",
+    "name": "nipplejs",
+    "escapedName": "nipplejs",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nipplejs/-/nipplejs-0.8.2.tgz",
+  "_shasum": "c1fea02e0259b577b100c7a6275598d9a12493d9",
+  "_spec": "nipplejs",
+  "_where": "D:\\Sites\\triplette-hexa-2.0\\client",
+  "author": {
+    "name": "Yoann Moinet",
+    "email": "yo@nnmoi.net",
+    "url": "https://yoannmoi.net"
+  },
+  "browser": "./dist/nipplejs.js",
+  "bugs": {
+    "url": "https://github.com/yoannmoinet/nipplejs/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A virtual joystick for touch capable interfaces",
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "@babel/preset-env": "7.2.0",
+    "babel-loader": "8.0.4",
+    "babel-plugin-add-module-exports": "1.0.0",
+    "casperjs": "1.1.4",
+    "concat-cli": "4.0.0",
+    "conventional-changelog": "1.1.0",
+    "eslint": "5.10.0",
+    "eslint-loader": "2.1.1",
+    "expect.js": "0.3.1",
+    "markdown-toc": "1.2.0",
+    "mocha": "5.2.0",
+    "phantomjs-prebuilt": "2.1.16",
+    "webpack": "4.27.1",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.3.1"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test",
+    "example": "example"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "types/*"
+  ],
+  "homepage": "https://github.com/yoannmoinet/nipplejs",
+  "license": "MIT",
+  "main": "./dist/nipplejs.js",
+  "module": "./src/index.js",
+  "name": "nipplejs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoannmoinet/nipplejs.git"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "webpack-dev-server --config webpack.config.js",
+    "changelog": "node ./bin/changelog.js",
+    "copyGh": "node ./bin/copyToGhPages.js",
+    "postversion": "npm run changelog",
+    "prepare": "NODE_ENV=production npm run build",
+    "start": "npm run build:dev -- --progress --watch",
+    "test": "casperjs test ./test/nipplejs.casper.js",
+    "toc": "markdown-toc -i README.md"
+  },
+  "types": "./types/index.d.ts",
+  "version": "0.8.2"
+}

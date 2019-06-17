@@ -1,0 +1,95 @@
+<div id="controls-gimbal-content" class="uk-child-width-expand uk-grid-small uk-margin-top uk-hidden" data-uk-grid>
+
+  <!-- gimbal panel -->
+  <div class="uk-width-1-1">
+    <div class="uk-card uk-card-default uk-card-small">
+      <div class="uk-card-header">
+        <div class="uk-grid uk-grid-small">
+          <div class="uk-width-auto"><h4>Gimbal</h4></div>
+          <div class="uk-width-expand uk-text-right panel-icons">
+            <a href="#" uk-toggle="target: #controls-gimbal-body" class="uk-icon-link" title="Minimize" data-uk-tooltip data-uk-icon="icon: chevron-up"></a>
+            <a href="#" class="gimbalDisplayButton uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+          </div>
+        </div>
+      </div>
+      <div class="uk-card-body" id="controls-gimbal-body">
+
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+            <div class="uk-width-1-3@s">
+              <div id="gimbalJoystick" class="uk-background-muted uk-padding-remove uk-height-medium joystick-thumb">
+                <span class="uk-badge uk-position-top-center" id="gimbalValueY">0.0</span>
+                <span class="uk-badge uk-position-center-right" id="gimbalValueX">0.0</span>
+              </div>
+            </div>
+            <div class="uk-width-1-3@s">
+
+              <form class="uk-form-stacked">
+                  <fieldset class="uk-fieldset">
+
+                      <legend class="uk-legend">Gimbal Trim</legend>
+
+                      <div class="uk-margin">
+                        <label class="uk-form-label" for="gimbalTrimX">Trim X</label>
+                        <input class="uk-range" id="gimbalTrimX" type="range" value="0" min="-100" max="100" step="0.1">
+                      </div>
+
+                      <div class="uk-margin">
+                        <label class="uk-form-label" for="gimbalTrimY">Trim Y</label>
+                        <input class="uk-range" id="gimbalTrimY" type="range" value="0" min="-100" max="100" step="0.1">
+                      </div>
+
+                      <div class="uk-margin">
+                        <a href="#controls-gimbal-content" id="gimbalTrimReset" class="uk-button uk-button-secondary uk-width-1-1">Reset Trim</a>
+                      </div>
+
+                      <div class="uk-margin">
+                        <a href="#controls-gimbal-content" id="gimbalRecalibrate" class="uk-button uk-button-secondary uk-width-1-1">Re Calibrate</a>
+                      </div>
+
+                  </fieldset>
+              </form>
+
+            </div>
+
+            <div class="uk-width-1-3@s">
+              <div id="gimbalTrimXdisplay">
+                <span class="uk-text-small">Trim X <small>(0)</small></span>
+                <progress class="uk-progress warning" value="50" max="100"></progress>
+              </div>
+
+              <div id="gimbalTrimYdisplay">
+                <span class="uk-text-small">Trim Y <small>(0)</small></span>
+                <progress class="uk-progress warning" value="50" max="100"></progress>
+              </div>
+
+              <hr />
+
+              <div id="gimbalXdisplay">
+                <span class="uk-text-small">Gimbal X <small>(0)</small></span>
+                <progress class="uk-progress success" value="50" max="100"></progress>
+              </div>
+
+              <div id="gimbalYdisplay">
+                <span class="uk-text-small">Gimbal Y <small>(0)</small></span>
+                <progress class="uk-progress success" value="50" max="100"></progress>
+              </div>
+
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /gimbal panel -->
+
+</div>
+
+
+<script>
+  var me = document.currentScript.ownerDocument;
+  var post = me.querySelector('#controls-gimbal-content');
+
+  var container = document.querySelector('#controls-gimbal');
+  container.appendChild(post.cloneNode(true));
+</script>

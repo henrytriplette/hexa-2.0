@@ -4,7 +4,10 @@
   "description": "A web interface for Hexa hexapod",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "run": "node index.js",
+    "css": "sass --watch public/assets/sass:public/assets/css"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/henrytriplette/hexa-2.0/issues"
   },
-  "homepage": "https://github.com/henrytriplette/hexa-2.0#readme"
+  "homepage": "https://github.com/henrytriplette/hexa-2.0#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.16.2",
+    "nipplejs": "^0.8.2",
+    "ola": "^1.1.0",
+    "request": "^2.88.0"
+  }
 }

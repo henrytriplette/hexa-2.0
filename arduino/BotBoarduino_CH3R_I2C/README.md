@@ -1,4 +1,5 @@
-In order to compile this code in Arduino, you will need to install the PS2X library from Bill Porter. We have a special version for Lynxmotion available [here](https://github.com/Lynxmotion/Arduino-PS2X/raw/master/PS2X_lib.zip) (ZIP).
+In order to compile this code in Arduino, you will need to install the PS2X library from Bill Porter.
+We have a special version for Lynxmotion available [here](https://github.com/Lynxmotion/Arduino-PS2X/raw/master/PS2X_lib.zip) (ZIP).
 
 If you already have the PS2X library installed, please remove it first and install the version linked above.
 The relevant files are usually located in your /Arduino/libraries/ folder.

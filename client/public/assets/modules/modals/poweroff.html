@@ -1,0 +1,22 @@
+<div id="modal-poweroff-content" class="uk-modal-dialog">
+  <button class="uk-modal-close-default" type="button" uk-close></button>
+  <div class="uk-modal-header">
+      <h2 class="uk-modal-title">Power Off Hera</h2>
+  </div>
+  <div class="uk-modal-body">
+    <p>This will shutdown Hera.</p>
+    <p>Are you sure?</p>
+  </div>
+  <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+      <a href="#" class="uk-button uk-button-primary" id="button-ui-poweroff">Power Off</a>
+  </div>
+</div>
+
+<script>
+  var me = document.currentScript.ownerDocument;
+  var post = me.querySelector('#modal-poweroff-content');
+
+  var container = document.querySelector('#modal-poweroff');
+  container.appendChild(post.cloneNode(true));
+</script>

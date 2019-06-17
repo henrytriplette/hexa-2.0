@@ -5,13 +5,13 @@
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
   <a href="https://twitter.com/henrytriplette">
-    <img alt="Twitter: @henrytriplette" src="https://img.shields.io/twitter/follow/@henrytriplette.svg?style=social" target="_blank" />
+    <img alt="Twitter: @henrytriplette" src="https://img.shields.io/twitter/follow/henrytriplette.svg?style=social" target="_blank" />
   </a>
 </p>
 
 > Hexapod repository for my LynxMotion Phoenix build, version 2.0: BotBoarduino, SSC-32U, Raspberry Pi, gimbal and lasers.
 
-# 🚫 [ALPHA] Work in Progress.
+## 🚫 [ALPHA] Work in Progress.
 
 Full release soon. Hopefully.
 
@@ -20,14 +20,14 @@ Full release soon. Hopefully.
 ## Install
 
 ```sh
-See documentation in docs folder
+See documentation in /docs folder
 ```
 
 ## Author
 
 👤 **Henry Triplette**
 
-* Twitter: [@@henrytriplette](https://twitter.com/henrytriplette)
+* Twitter: [@henrytriplette](https://twitter.com/henrytriplette)
 * Github: [@henrytriplette](https://github.com/henrytriplette)
 
 ## 🤝 Contributing

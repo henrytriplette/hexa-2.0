@@ -26,6 +26,10 @@ https://www.youtube.com/watch?v=b6ZagKRnRdM&list=PLYsmShE55_Eo_Pcc6GLP4xRGETEj_f
 
 Note that the audio jack output also uses PWM 0 and PWM 1, so you can't have audio output on that socket and use the PWMs at the same time.
 
+sudo apt update
+sudo apt install python3-gpiozero
+
+
 # Libs:
 
 https://github.com/vsergeev/python-periphery

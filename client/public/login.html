@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicons/favicon-16x16.png">
+  <link rel="manifest" href="./assets/favicons/site.webmanifest">
+  <link rel="mask-icon" href="./assets/favicons/safari-pinned-tab.svg" color="#c65bd5">
+  <link rel="shortcut icon" href="./assets/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#9f00a7">
+  <meta name="msapplication-config" content="./assets/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Hera 2.0 Hexapod</title>
+
+  <!-- Fonts and icons -->
+  <link href="./assets/css/font-ibm.css" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link href="./assets/lib/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- CSS Files -->
+  <link href="./assets/lib/uikit/css/uikit.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Dark -->
+  <link href="./assets/css/dark-login.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="login uk-cover-container uk-background-secondary uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-overflow-hidden uk-light" data-uk-height-viewport>
+    <!-- overlay -->
+    <div class="uk-position-cover uk-overlay-primary"></div>
+    <!-- /overlay -->
+    <div class="uk-position-bottom-center uk-position-small uk-visible@m uk-position-z-index">
+      <p class="uk-text-small uk-text-center">Created by <a href="https://triplette.it">Henry Triplette</a> | Way our waves radiate strong </p>
+    </div>
+    <div class="uk-width-medium uk-padding-small uk-position-z-index" uk-scrollspy="cls: uk-animation-fade">
+
+      <div class="uk-text-center uk-margin">
+        <img src="./assets/img/dashboard-logo.png" alt="Hera Hexapod 2.0">
+      </div>
+
+      <!-- login -->
+      <form class="toggle-class" action="auth" method="POST">
+        <fieldset class="uk-fieldset">
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: user"></span>
+              <input class="uk-input uk-border-pill" name="username" required placeholder="Username" type="text">
+            </div>
+          </div>
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"></span>
+              <input class="uk-input uk-border-pill" name="password" required placeholder="Password" type="password">
+            </div>
+          </div>
+          <div class="uk-margin-bottom">
+            <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">LOG IN</button>
+          </div>
+        </fieldset>
+      </form>
+      <!-- /login -->
+
+    </div>
+
+
+    <!--   Core JS Files   -->
+    <script src="./assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets/lib/uikit/js/uikit.min.js" type="text/javascript"></script>
+    <script src="./assets/lib/uikit/js/uikit-icons.min.js" type="text/javascript"></script>
+  </body>
+</html>

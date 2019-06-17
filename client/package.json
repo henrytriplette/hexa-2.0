@@ -24,9 +24,9 @@
   "homepage": "https://github.com/henrytriplette/hexa-2.0#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "express-session": "^1.16.2",
     "nipplejs": "^0.8.2",
     "ola": "^1.1.0",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request": "^2.88.0"
   }
 }

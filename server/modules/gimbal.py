@@ -1,43 +1,45 @@
 #!/usr/bin/env python
 # Handle gimbal
 
-# Tutorial
-# https://maker.pro/raspberry-pi/projects/hexapod-walker-raspberry-pi
-
-# Input example
-# {'x': -0.8800528888889119, 'y': -0.8726158222222438, 'xTrim': 0, 'yTrim': 0, 'xMax': 100, 'xMin': -100, 'yMax': 100, 'yMin': -100, '_gsTweenID': 't2'}
-
-import pigpio
+from gpiozero import Servo, AngularServo
+from time import sleep
 
 from modules import utility
-
 import settings
 
- pi = pigpio.pi()
-
-CENTER = 1500
-SERVO_TRAVEL = 600
-FULL_TRAVEL = 250
+gimbalX = False
+gimbalY = False
+gimbalReset = False
 
 def init_gimbal():
-    print('init_gimbal')
+    gimbalX = AngularServo(settings.PWM_GIMBAL_X, min_angle=-42, max_angle=42)
+    gimbalX.angle = 0.0
+    gimbalY = AngularServo(settings.PWM_GIMBAL_Y, min_angle=-42, max_angle=42)
+    gimbalY.angle = 0.0
+
+    gimbalReset = Servo(settings.PWM_GIMBAL_RESET)
 
 def handle_play_gimbal(gimbal_data):
     gimbal_data = utility.sanitizeJson(gimbal_data)
 
-    xTravel = CENTER + round((gimbal_data['x']/FULL_TRAVEL) * SERVO_TRAVEL);
+    xTravel = round(gimbal_data['x']/10);
     # print( xTravel )
-    pi.set_servo_pulsewidth( settings.PWM_GIMBAL_X , xTravel );
+    gimbalX.angle = xTravel
 
-    yTravel = CENTER + round((gimbal_data['y']/FULL_TRAVEL) * SERVO_TRAVEL);
+
+    yTravel = round(gimbal_data['y']/10);
     # print( yTravel )
-    pi.set_servo_pulsewidth( settings.PWM_GIMBAL_Y , yTravel );
+    gimbalY.angle = yTravel
 
 def handle_recalibrate_gimbal():
     # print('handle_recalibrate_gimbal')
-    pi.set_servo_pulsewidth( settings.PWM_GIMBAL_RESET , 800)
-    pi.set_servo_pulsewidth( settings.PWM_GIMBAL_RESET , 2100 );
-    pi.set_servo_pulsewidth( settings.PWM_GIMBAL_RESET , 800)
+    gimbalX.angle = 0
+    gimbalY.angle = 0
+
+    gimbalReset.min()
+    gimbalReset.max()
+    sleep(0.5)
+    gimbalReset.min()
 
 if __name__=="__main__":
     pass

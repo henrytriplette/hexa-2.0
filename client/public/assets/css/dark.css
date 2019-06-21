@@ -1,3 +1,9 @@
+.darkTheme {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
 .darkTheme .uk-background-primary {
   background-color: #e2001c;
 }
@@ -58,6 +64,9 @@
   background: #222;
   color: #e2001c;
   border: 1px solid #e2001c;
+}
+.darkTheme .uk-form-label {
+  color: #FFF;
 }
 
 /*# sourceMappingURL=dark.css.map */

@@ -10,29 +10,29 @@ def init():
 
     # Setting GPIO allocation
     global SERB_TOGGLE_BEC
-    SERB_TOGGLE_BEC = 18
+    SERB_TOGGLE_BEC = 17
 
     global SERB_TOGGLE_GIMBAL
     SERB_TOGGLE_GIMBAL = 18
 
     global SERB_TOGGLE_LIGHT
-    SERB_TOGGLE_LIGHT = 18
+    SERB_TOGGLE_LIGHT = 23
 
     global SERB_TOGGLE_LASER
-    SERB_TOGGLE_LASER = 18
+    SERB_TOGGLE_LASER = 24
 
     # Setting Gimbal allocation
     global PWM_GIMBAL_X
-    PWM_GIMBAL_X = 18
+    PWM_GIMBAL_X = 27
 
     global PWM_GIMBAL_Y
-    PWM_GIMBAL_Y = 18
+    PWM_GIMBAL_Y = 22
 
-    global PWM_GIMBAL_Z
-    PWM_GIMBAL_Z = 18
+    # global PWM_GIMBAL_Z
+    # PWM_GIMBAL_Z = 18
 
     global PWM_GIMBAL_RESET
-    PWM_GIMBAL_RESET = 18
+    PWM_GIMBAL_RESET = 25
 
     # global arduino_i2cAddress
     # arduino_i2cAddress = 0x04

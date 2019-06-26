@@ -1,22 +1,11 @@
-- Add contents to server, DUH.
 
-- Socket calls list
+# To Do
 
-    client_connected
-    server_connected
-    server_log
+- Function to convert gimbal signal to appropriate servo range
+- Add support for controller
+- Add universal function for value scaling
 
-    shoutdown
-    reboot
+# Ideas
 
-    toggle
-
-    playAudio
-    playSpeech
-
-    playJoystick
-    playButton
-
-    playGimbal
-
-    camStart
+- Python camera interface:
+https://picamera.readthedocs.io/en/release-1.13/recipes1.html

@@ -4,10 +4,6 @@
 def init():
 
     # -----------------------------------------------------------------------------
-    # Setting GPIO comunication mode
-    global GPIOMODE
-    # GPIOMODE = GPIO.BOARD
-
     # Setting GPIO allocation
     global SERB_TOGGLE_BEC
     SERB_TOGGLE_BEC = 17
@@ -34,25 +30,34 @@ def init():
     global PWM_GIMBAL_RESET
     PWM_GIMBAL_RESET = 25
 
-    # global arduino_i2cAddress
-    # arduino_i2cAddress = 0x04
+    global PWM_GIMBAL_X_min_angle
+    PWM_GIMBAL_X_min_angle = -42
+
+    global PWM_GIMBAL_X_max_angle
+    PWM_GIMBAL_X_max_angle = 42
+
+    global PWM_GIMBAL_X_start_angle
+    PWM_GIMBAL_X_start_angle = 0.0
+
+    global PWM_GIMBAL_Y_min_angle
+    PWM_GIMBAL_Y_min_angle = -42
+
+    global PWM_GIMBAL_Y_max_angle
+    PWM_GIMBAL_Y_max_angle = 42
+
+    global PWM_GIMBAL_Y_start_angle
+    PWM_GIMBAL_Y_start_angle = 0.0
+
+    global I2C_arduino_i2cAddress
+    I2C_arduino_i2cAddress = 4
 
     # The Register is where we send our 1 to tell our slave to read or a 0 to send data to.
-    # global arduino_Register
-    # arduino_Register = 0x00
+    global I2C_arduino_Register
+    I2C_arduino_Register = 0
 
     # We need to identify the size of our message we are sending to the slave. So that we can send #the end of transmission bit.
-    # global arduino_Data_Length
-    # arduino_Data_Length = 0x07
-
-
-
-    global local_dst
-    local_dst = '/home/pi/hexa/'
-
-    # gallery directory
-    global imageDir
-    imageDir = '/home/pi/hexa/photo/'
+    global I2C_arduino_Data_Length
+    I2C_arduino_Data_Length = 7
 
     # Hexapod Control
     global SERB_START

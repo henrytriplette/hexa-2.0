@@ -12,33 +12,32 @@ gimbalY = False
 gimbalReset = False
 
 def init_gimbal():
-    gimbalX = AngularServo(settings.PWM_GIMBAL_X, min_angle=-42, max_angle=42)
-    gimbalX.angle = 0.0
-    gimbalY = AngularServo(settings.PWM_GIMBAL_Y, min_angle=-42, max_angle=42)
-    gimbalY.angle = 0.0
+    gimbalX = AngularServo(settings.PWM_GIMBAL_X, min_angle=settings.PWM_GIMBAL_X_min_angle, max_angle=settings.PWM_GIMBAL_X_max_angle)
+    gimbalX.angle = settings.PWM_GIMBAL_X_start_angle
+    gimbalY = AngularServo(settings.PWM_GIMBAL_Y, min_angle=settings.PWM_GIMBAL_Y_min_angle, max_angle=settings.PWM_GIMBAL_Y_max_angle)
+    gimbalY.angle = settings.PWM_GIMBAL_Y_start_angle
 
     gimbalReset = Servo(settings.PWM_GIMBAL_RESET)
 
 def handle_play_gimbal(gimbal_data):
     gimbal_data = utility.sanitizeJson(gimbal_data)
 
-    xTravel = round(gimbal_data['x']/10);
+    xTravel = utility.convertRange(gimbal_data['x'], [gimbal_data['xMin'], gimbal_data['xMax']], [settings.PWM_GIMBAL_X_min_angle, settings.PWM_GIMBAL_X_max_angle])
     # print( xTravel )
-    gimbalX.angle = xTravel
+    gimbalX.angle = round(xTravel)
 
-
-    yTravel = round(gimbal_data['y']/10);
+    yTravel = utility.convertRange(gimbal_data['y'], [gimbal_data['yMin'], gimbal_data['yMax']], [settings.PWM_GIMBAL_Y_min_angle, settings.PWM_GIMBAL_Y_max_angle])
     # print( yTravel )
-    gimbalY.angle = yTravel
+    gimbalY.angle = round(yTravel)
 
 def handle_recalibrate_gimbal():
-    # print('handle_recalibrate_gimbal')
-    gimbalX.angle = 0
-    gimbalY.angle = 0
+    print('handle_recalibrate_gimbal')
+    gimbalX.angle = settings.PWM_GIMBAL_X_start_angle
+    gimbalY.angle = settings.PWM_GIMBAL_Y_start_angle
 
     gimbalReset.min()
     gimbalReset.max()
-    sleep(0.5)
+    sleep(0.1)
     gimbalReset.min()
 
 if __name__=="__main__":

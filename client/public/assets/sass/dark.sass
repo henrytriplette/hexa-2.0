@@ -1,4 +1,7 @@
 $primary-color: #e2001c
+$color_black: #000000
+$color_light_black: #666
+$color_grey: #333
 
 .darkTheme
   -webkit-transition: all 0.2s ease
@@ -16,10 +19,14 @@ $primary-color: #e2001c
     color: #FFF
 
   #content
-    background-color: #333
+    color: $primary-color
+    background: linear-gradient(90deg, $color_light_black 1.85vh, transparent 1%) center, linear-gradient($color_light_black 1.85vh, transparent 1%) center, $color_grey
+    background-size: 2.04vh 2.04vh
+
 
   footer
     color: #505050
+    background: rgba(#7c7c7c, 0.5)
 
   .uk-hr, hr
     border-top: 1px solid #505050

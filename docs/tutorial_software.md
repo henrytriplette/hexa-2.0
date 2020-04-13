@@ -66,7 +66,9 @@ o) Install dependencies
   ```
   Then bgin:
   ```
-  sudo apt-get install apache2 node.js npm pigpio git
+  curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+  sudo apt-get install nodejs
+  sudo apt-get install apache2 pigpio git
   ```
   To make sure it ran correctly, run
   ```

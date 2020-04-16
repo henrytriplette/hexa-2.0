@@ -14,8 +14,6 @@ from modules import toggle
 from modules import hexapod
 from modules import joystick
 from modules import speech
-
-
 from modules import utility
 
 app = Flask(__name__)

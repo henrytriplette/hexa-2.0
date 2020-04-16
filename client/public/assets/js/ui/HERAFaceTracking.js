@@ -20,10 +20,10 @@ export class HERAFaceTracking {
       this.hFaceTracking = false;
 
       // Init Loading Facetracking resources
-      this.faceApiInit()
+      // this.faceApiInit()
 
       // Bind button toggle
-      this.bindFaceTrackingToggle(this);
+      // this.bindFaceTrackingToggle(this);
     }
 
     isFaceDetectionModelLoaded() {

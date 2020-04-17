@@ -2,14 +2,16 @@
 # Handle all toggle
 
 from gpiozero import LED
+from time import sleep
 
 from modules import utility
 import settings
 
-toggleSERB_TOGGLE_BEC = False
-toggleSERB_TOGGLE_GIMBAL = False
-toggleSERB_TOGGLE_LIGHT = False
-toggleSERB_TOGGLE_LASER = False
+# Init toggle variable container
+global toggleSERB_TOGGLE_BEC
+global toggleSERB_TOGGLE_GIMBAL
+global toggleSERB_TOGGLE_LIGHT
+global toggleSERB_TOGGLE_LASER
 
 def init_toggle():
     # Start with the pins off

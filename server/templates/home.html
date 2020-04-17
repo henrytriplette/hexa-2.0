@@ -911,9 +911,6 @@
 
     <!--   Controls Files   -->
     <script type="module">
-
-      var socket = io('http://127.0.0.1:5000');
-
       import { HERAui } from '{{ url_for('static', filename='./assets/js/ui/HERAui.js') }}';
       import { HERAJoystick } from '{{ url_for('static', filename='./assets/js/ui/HERAJoystick.js') }}';
       import { HERAGimbal } from '{{ url_for('static', filename='./assets/js/ui/HERAGimbal.js') }}';
@@ -922,16 +919,21 @@
       import { HERAFaceTracking } from '{{ url_for('static', filename='./assets/js/ui/HERAFaceTracking.js') }}';
       import { HERAEffects } from '{{ url_for('static', filename='./assets/js/ui/HERAEffects.js') }}';
 
-      const heraui = new HERAui(socket);
-      const herajoystick = new HERAJoystick(socket)
-      const heragimbal = new HERAGimbal(socket)
-      const heratoggle = new HERAToggle(socket)
-      const heraspeech = new HERASpeech(socket)
-      const herafacetracking = new HERAFaceTracking(socket)
-      const heraeffects = new HERAEffects(socket)
+      jQuery(document).ready(function() {
+        const namespace = '/hera';
+        const host = window.location.hostname;
 
-      // jQuery(document).ready(function() {
-      // })
+        var socket = io(host + ':5000' + namespace);
+
+        const heraui = new HERAui(socket);
+        const herajoystick = new HERAJoystick(socket)
+        const heragimbal = new HERAGimbal(socket)
+        const heratoggle = new HERAToggle(socket)
+        const heraspeech = new HERASpeech(socket)
+        const herafacetracking = new HERAFaceTracking(socket)
+        const heraeffects = new HERAEffects(socket)
+
+      })
     </script>
 	</body>
 </html>

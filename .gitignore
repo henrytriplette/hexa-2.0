@@ -8,5 +8,6 @@ _github/*
 
 *.wav
 *.mp3
+*.psd
 
 server/test.py

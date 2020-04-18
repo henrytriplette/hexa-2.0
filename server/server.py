@@ -86,4 +86,4 @@ if __name__ == '__main__':
     # Init and reserve Joystik Pins [I2C]
     joystick.init_joystick()
 
-    socketio.run(app, host, debug=True)
+    socketio.run(app, host, debug=False)

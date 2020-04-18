@@ -12,7 +12,7 @@ export class HERAGimbal {
 
       this.timeline = new TimelineMax({
         repeat:-1,
-        repeatDelay: 0.25,
+        repeatDelay: 0.75,
         onRepeat:function() {
           // console.log('playGimbal', window.gimbalAxis);
           socket.emit('playGimbal', JSON.stringify(window.gimbalAxis));
@@ -102,7 +102,7 @@ export class HERAGimbal {
 
             // Avoid exeeding max and min value on axis
             if (window.gimbalAxis.xMin < x && x < window.gimbalAxis.xMax) {
-              window.gimbalAxis.x = parseFloat(x);
+              window.gimbalAxis.x = x;
             } else {
               if (x > 0) {
                 window.gimbalAxis.x = window.gimbalAxis.xMax
@@ -112,7 +112,7 @@ export class HERAGimbal {
             }
 
             if (window.gimbalAxis.yMin < y && y < window.gimbalAxis.yMax) {
-              window.gimbalAxis.y = parseFloat(y);
+              window.gimbalAxis.y = y;
             } else {
               if (y > 0) {
                 window.gimbalAxis.y = window.gimbalAxis.yMax
@@ -143,10 +143,10 @@ export class HERAGimbal {
             jQuery('#gimbalValueX').html("0.0")
             jQuery('#gimbalValueY').html("0.0")
 
-            TweenMax.to(window.gimbalAxis, 1.5, {
+            TweenMax.to(window.gimbalAxis, 0.5, {
 
-              x: window.gimbalAxis.xTrim,
-              y: window.gimbalAxis.yTrim,
+              x: (window.gimbalAxis.xTrim).toFixed(1),
+              y: (window.gimbalAxis.yTrim).toFixed(1),
 
               onUpdate:function() {
 

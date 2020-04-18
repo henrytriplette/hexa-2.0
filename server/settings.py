@@ -24,11 +24,14 @@ def init():
     global PWM_GIMBAL_Y
     PWM_GIMBAL_Y = 22
 
-    # global PWM_GIMBAL_Z
-    # PWM_GIMBAL_Z = 18
+    global PWM_GIMBAL_Z
+    PWM_GIMBAL_Z = 20
 
     global PWM_GIMBAL_RESET
     PWM_GIMBAL_RESET = 21
+
+    global PWM_GIMBAL_deadband # Joystick deadband
+    PWM_GIMBAL_deadband = 45
 
     global PWM_GIMBAL_X_min_angle
     PWM_GIMBAL_X_min_angle = -40
@@ -49,13 +52,13 @@ def init():
     PWM_GIMBAL_Y_start_angle = 0.0
 
     global PWM_GIMBAL_Z_min_angle
-    PWM_GIMBAL_Y_min_angle = -40
+    PWM_GIMBAL_Z_min_angle = -40
 
     global PWM_GIMBAL_Z_max_angle
-    PWM_GIMBAL_Y_max_angle = 40
+    PWM_GIMBAL_Z_max_angle = 40
 
     global PWM_GIMBAL_Z_start_angle
-    PWM_GIMBAL_Y_start_angle = 0.0
+    PWM_GIMBAL_Z_start_angle = 0.0
 
     global I2C_arduino_i2cAddress
     I2C_arduino_i2cAddress = 4

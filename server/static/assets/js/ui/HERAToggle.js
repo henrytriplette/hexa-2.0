@@ -28,6 +28,7 @@ export class HERAToggle {
     }
 
     sendToggleController(data, checked) {
+      console.log(data, checked);
       jQuery('#serverOutput').append('<span class="blue">' + data + ':' + checked + '</span>')
       this.socket.emit('toggle', JSON.stringify({ element: data, value: checked}));
     }

@@ -7,16 +7,25 @@ from time import sleep
 from modules import utility
 import settings
 
-gimbalX = False
-gimbalY = False
-gimbalReset = False
+global gimbalX
+global gimbalY
+global gimbal>
+global gimbalReset
 
 def init_gimbal():
+    global gimbalX
     gimbalX = AngularServo(settings.PWM_GIMBAL_X, min_angle=settings.PWM_GIMBAL_X_min_angle, max_angle=settings.PWM_GIMBAL_X_max_angle)
     gimbalX.angle = settings.PWM_GIMBAL_X_start_angle
+
+    global gimbalZ
+    gimbalZ = AngularServo(settings.PWM_GIMBAL_Z, min_angle=settings.PWM_GIMBAL_Z_min_angle, max_angle=settings.PWM_GIMBAL_Z_max_angle)
+    gimbalZ.angle = settings.PWM_GIMBAL_Z_start_angle
+
+    global gimbalY
     gimbalY = AngularServo(settings.PWM_GIMBAL_Y, min_angle=settings.PWM_GIMBAL_Y_min_angle, max_angle=settings.PWM_GIMBAL_Y_max_angle)
     gimbalY.angle = settings.PWM_GIMBAL_Y_start_angle
 
+    global gimbalReset
     gimbalReset = Servo(settings.PWM_GIMBAL_RESET)
 
 def handle_play_gimbal(gimbal_data):
@@ -30,10 +39,16 @@ def handle_play_gimbal(gimbal_data):
     # print( yTravel )
     gimbalY.angle = round(yTravel)
 
-def handle_recalibrate_gimbal():
+    zTravel = utility.convertRange(gimbal_data['z'], [gimbal_data['zMin'], gimbal_data['zMax']], [settings.PWM_GIMBAL_Z_min_angle, settings.PWM_GIMBAL_Z_max_angle])
+    # print( zTravel )
+    gimbalZ.angle = round(zTravel)
+
+def handle_recalibrate_gimbal(self):
     print('handle_recalibrate_gimbal')
+
     gimbalX.angle = settings.PWM_GIMBAL_X_start_angle
     gimbalY.angle = settings.PWM_GIMBAL_Y_start_angle
+    gimbalZ.angle = settings.PWM_GIMBAL_Z_start_angle
 
     gimbalReset.min()
     gimbalReset.max()

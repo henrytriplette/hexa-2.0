@@ -572,7 +572,7 @@
               <div class="uk-card-body" id="controls-speech-body">
 
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-                    <div class="uk-width-1-2">
+                    <div class="uk-width-1-2 uk-width-1-1@s">
 
                       <form id="speechText2SpeechContainer">
                           <fieldset class="uk-fieldset">
@@ -600,7 +600,7 @@
                       </form>
 
                     </div>
-                    <div class="uk-width-1-2">
+                    <div class="uk-width-1-2 uk-width-1-1@s">
 
                       <form id="speechAudioContainer">
                           <fieldset class="uk-fieldset">
@@ -919,10 +919,10 @@
       import { HERAFaceTracking } from '{{ url_for('static', filename='./assets/js/ui/HERAFaceTracking.js') }}';
       import { HERAEffects } from '{{ url_for('static', filename='./assets/js/ui/HERAEffects.js') }}';
 
-      jQuery(document).ready(function() {
-        const namespace = '/hera';
-        const host = window.location.hostname;
+      const namespace = '/hera';
+      const host = window.location.hostname;
 
+      jQuery(document).ready(function() {
         var socket = io(host + ':5000' + namespace);
 
         const heraui = new HERAui(socket);

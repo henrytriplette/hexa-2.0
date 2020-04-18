@@ -15,9 +15,16 @@ global toggleSERB_TOGGLE_LASER
 
 def init_toggle():
     # Start with the pins off
+    global toggleSERB_TOGGLE_BEC
     toggleSERB_TOGGLE_BEC = LED(settings.SERB_TOGGLE_BEC, initial_value=True)
+
+    global toggleSERB_TOGGLE_GIMBAL
     toggleSERB_TOGGLE_GIMBAL = LED(settings.SERB_TOGGLE_GIMBAL, initial_value=True)
+
+    global toggleSERB_TOGGLE_LIGHT
     toggleSERB_TOGGLE_LIGHT = LED(settings.SERB_TOGGLE_LIGHT, initial_value=True)
+
+    global toggleSERB_TOGGLE_LASER
     toggleSERB_TOGGLE_LASER = LED(settings.SERB_TOGGLE_LASER, initial_value=True)
 
 def handle_toggle_change(read_toggle):

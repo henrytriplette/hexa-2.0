@@ -6,16 +6,16 @@ def init():
     # -----------------------------------------------------------------------------
     # Setting GPIO allocation
     global SERB_TOGGLE_BEC
-    SERB_TOGGLE_BEC = 17
+    SERB_TOGGLE_BEC = 24
 
     global SERB_TOGGLE_GIMBAL
-    SERB_TOGGLE_GIMBAL = 18
+    SERB_TOGGLE_GIMBAL = 23
 
     global SERB_TOGGLE_LIGHT
-    SERB_TOGGLE_LIGHT = 23
+    SERB_TOGGLE_LIGHT = 17
 
     global SERB_TOGGLE_LASER
-    SERB_TOGGLE_LASER = 24
+    SERB_TOGGLE_LASER = 18
 
     # Setting Gimbal allocation
     global PWM_GIMBAL_X
@@ -28,24 +28,33 @@ def init():
     # PWM_GIMBAL_Z = 18
 
     global PWM_GIMBAL_RESET
-    PWM_GIMBAL_RESET = 25
+    PWM_GIMBAL_RESET = 21
 
     global PWM_GIMBAL_X_min_angle
-    PWM_GIMBAL_X_min_angle = -42
+    PWM_GIMBAL_X_min_angle = -40
 
     global PWM_GIMBAL_X_max_angle
-    PWM_GIMBAL_X_max_angle = 42
+    PWM_GIMBAL_X_max_angle = 40
 
     global PWM_GIMBAL_X_start_angle
     PWM_GIMBAL_X_start_angle = 0.0
 
     global PWM_GIMBAL_Y_min_angle
-    PWM_GIMBAL_Y_min_angle = -42
+    PWM_GIMBAL_Y_min_angle = -40
 
     global PWM_GIMBAL_Y_max_angle
-    PWM_GIMBAL_Y_max_angle = 42
+    PWM_GIMBAL_Y_max_angle = 40
 
     global PWM_GIMBAL_Y_start_angle
+    PWM_GIMBAL_Y_start_angle = 0.0
+
+    global PWM_GIMBAL_Z_min_angle
+    PWM_GIMBAL_Y_min_angle = -40
+
+    global PWM_GIMBAL_Z_max_angle
+    PWM_GIMBAL_Y_max_angle = 40
+
+    global PWM_GIMBAL_Z_start_angle
     PWM_GIMBAL_Y_start_angle = 0.0
 
     global I2C_arduino_i2cAddress

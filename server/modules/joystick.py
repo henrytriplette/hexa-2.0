@@ -7,21 +7,28 @@ from time import sleep
 from modules import utility
 import settings
 
-arduino_i2cAddress = False
-arduino_Register = False
-arduino_Data_Length = False
-bus = False
+global arduino_i2cAddress
+global arduino_Register
+global arduino_Data_Length
+global bus
+
 data = [0, 0, 0, 128, 128, 128, 128]
 
 def init_joystick():
     print('init_joystick')
 
+    global arduino_i2cAddress
     arduino_i2cAddress = settings.I2C_arduino_i2cAddress;
+
     # The Register is where we send our 1 to tell our slave to read or a 0 to send data to.
+    global arduino_Register
     arduino_Register = settings.I2C_arduino_Register;
+
     # We need to identify the size of our message we are sending to the slave. So that we can send //the end of transmission bit.
+    global arduino_Data_Length
     arduino_Data_Length = settings.I2C_arduino_Data_Length;
 
+    global bus
     bus = SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
 def handle_play_joystick(joy_data):

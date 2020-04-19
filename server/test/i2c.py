@@ -22,10 +22,10 @@ if __name__=="__main__":
         except Exception as e:
             raise sys.exit(e)
             # continue
-        # bus.write_byte(arduino_i2cAddress, value)
+        bus.write_byte(arduino_i2cAddress, value)
 
         # Write a block of 7 bytes to address [arduino_i2cAddress] from offset [arduino_Register]
-        data = [1, 2, 3, 4, 5, 6, 7]
-        bus.write_i2c_block_data(arduino_i2cAddress, arduino_Register, data)
+        # data = [1, 2, 3, 4, 5, 6, 7]
+        # bus.write_i2c_block_data(arduino_i2cAddress, arduino_Register, data)
 
         sleep(0.05)

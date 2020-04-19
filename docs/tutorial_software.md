@@ -178,8 +178,7 @@ o) Activate virtualenv
 
   When the command completes, your current terminal program will be configured to use your virtual environment for activities related to Python 3. Given that, install the Python dependencies for your GPIO Zero project into your virtual environment:
   ```
-  pip install RPi.GPIO
-  pip install gpiozero
+  pip install -r requirements.txt
   ```
 
 o) Install atlas for Snowboy Support

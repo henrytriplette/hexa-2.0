@@ -241,13 +241,13 @@ void receiveData(int howMany)
       // SerSerial.println(abDualShock[i]);
     }
 
-    // SerSerial.print(abDualShock[0]);
-    // SerSerial.print(abDualShock[1]);
-    // SerSerial.print(abDualShock[2]);
-    // SerSerial.print(abDualShock[3]);
-    // SerSerial.print(abDualShock[4]);
-    // SerSerial.print(abDualShock[5]);
-    // SerSerial.print(abDualShock[6]);
+    SerSerial.print(abDualShock[0]);
+    SerSerial.print(abDualShock[1]);
+    SerSerial.print(abDualShock[2]);
+    SerSerial.print(abDualShock[3]);
+    SerSerial.print(abDualShock[4]);
+    SerSerial.print(abDualShock[5]);
+    SerSerial.print(abDualShock[6]);
 
     // Lets check the checksum...to always be zero =)
     if (abDualShock[0] == 0 ) {

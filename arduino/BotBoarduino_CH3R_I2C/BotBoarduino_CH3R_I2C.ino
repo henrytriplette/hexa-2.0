@@ -24,7 +24,7 @@
 #include <Arduino.h>
 #else
 #endif
-#include <PS2X_lib.h>
+// #include <PS2X_lib.h>
 #include <pins_arduino.h>
 #include <SoftwareSerial.h>
 #include "Hex_globals.h"

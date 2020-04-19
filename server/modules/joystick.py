@@ -51,6 +51,8 @@ def handle_play_joystick(joy_data):
     data[5] = int(round(data[5]))
     data[6] = int(round(data[6]))
 
+    print(data)
+
     bus.write_i2c_block_data(arduino_i2cAddress, arduino_Register, data)
 
 def handle_play_button(button_data):
@@ -69,6 +71,8 @@ def handle_play_button(button_data):
             128,
             128
         ]
+
+        print(data)
 
         bus.write_i2c_block_data(arduino_i2cAddress, arduino_Register, data)
 

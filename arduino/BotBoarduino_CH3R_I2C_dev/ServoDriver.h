@@ -20,7 +20,6 @@ class ServoDriver {
 public:
 void Init(void);
 
-void GPSetSpeedMultiplyer(short);
 #ifdef OPT_GPPLAYER
 inline boolean  FIsGPEnabled(void) {
         return _fGPEnabled;
@@ -55,7 +54,6 @@ private:
 boolean _fGPEnabled;         // IS GP defined for this servo driver?
 boolean _fGPActive;          // Is a sequence currently active - May change later when we integrate in sequence timing adjustment code
 uint8_t _iSeq;               // current sequence we are running
-short _sGPSM;               // Speed multiplier +-200
 #endif
 
 };

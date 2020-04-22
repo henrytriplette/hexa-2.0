@@ -53,45 +53,45 @@
 // DualShock(6) - Left Stick Up/Down
 // Note: The actual usages are from PS2 control
 //PS2 CONTROLS:
-//  [Common Controls]
-//  - Start     Turn on/off the bot
-//  - L1      Toggle Shift mode
-//  - L2      Toggle Rotate mode
-//  - Circle    Toggle Single leg mode
+//[Common Controls]
+//- StartTurn on/off the bot
+//- L1Toggle Shift mode
+//- L2Toggle Rotate mode
+//- CircleToggle Single leg mode
 //   - Square        Toggle Balance mode
-//  - Triangle    Move body to 35 mm from the ground (walk pos)
-//          and back to the ground
-//  - D-Pad up    Body up 10 mm
-//  - D-Pad down  Body down 10 mm
-//  - D-Pad left  decrease speed with 50mS
-//  - D-Pad right increase speed with 50mS
+//- TriangleMove body to 35 mm from the ground (walk pos)
+//and back to the ground
+//- D-Pad upBody up 10 mm
+//- D-Pad downBody down 10 mm
+//- D-Pad leftd ecrease speed with 50mS
+//- D-Pad right increase speed with 50mS
 //
-//  [Walk Controls]
-//  - select    Switch gaits
-//  - Left Stick  (Walk mode 1) Walk/Strafe
-//          (Walk mode 2) Disable
-//  - Right Stick (Walk mode 1) Rotate,
-//          (Walk mode 2) Walk/Rotate
-//  - R1      Toggle Double gait travel speed
-//  - R2      Toggle Double gait travel length
+//[Walk Controls]
+//- select Switch gaits
+//- Left Stick (Walk mode 1) Walk/Strafe
+// (Walk mode 2) Disable
+//- Right Stick (Walk mode 1) Rotate,
+//(Walk mode 2) Walk/Rotate
+//- R1 Toggle Double gait travel speed
+//- R2 Toggle Double gait travel length
 //
-//  [Shift Controls]
-//  - Left Stick  Shift body X/Z
-//  - Right Stick Shift body Y and rotate body Y
+//[Shift Controls]
+//- Left Stick Shift body X/Z
+//- Right Stick Shift body Y and rotate body Y
 //
-//  [Rotate Controls]
-//  - Left Stick  Rotate body X/Z
-//  - Right Stick Rotate body Y
+//[Rotate Controls]
+//- Left Stick Rotate body X/Z
+//- Right Stick Rotate body Y
 //
-//  [Single leg Controls]
-//  - select    Switch legs
-//  - Left Stick  Move Leg X/Z (relative)
-//  - Right Stick Move Leg Y (absolute)
-//  - R2      Hold/release leg position
+//[Single leg Controls]
+//- selectSwitch legs
+//- Left StickMove Leg X/Z (relative)
+//- Right StickMove Leg Y (absolute)
+//- R2Hold/release leg position
 //
-//  [GP Player Controls]
-//  - select    Switch Sequences
-//  - R2      Start Sequence
+//[GP Player Controls]
+//- select Switch Sequences
+//- R2 Start Sequence
 //
 //====================================================================
 // [Include files]
@@ -162,7 +162,7 @@
 InputController g_InputController;        // Our Input controller
 
 static short g_BodyYOffset;
-static word g_wSerialErrorCnt;
+static short g_wSerialErrorCnt;
 static short g_BodyYShift;
 static byte ControlMode;
 static word g_wButtonsPrev;
@@ -202,7 +202,7 @@ void InputController::Init(void)
         DoubleTravelOn = false;
         WalkMethod = false;
 
-        g_InControlState.SpeedControl = 400; // Sort of migrate stuff in from Devon.
+        g_InControlState.SpeedControl = 100; // Sort of migrate stuff in from Devon.
 }
 
 //==============================================================================
@@ -241,18 +241,20 @@ void receiveData(int howMany)
                         // SerSerial.println(abDualShock[i]);
                 }
 
-                SerSerial.print(abDualShock[0]);
-                SerSerial.print(abDualShock[1]);
-                SerSerial.print(abDualShock[2]);
-                SerSerial.print(abDualShock[3]);
-                SerSerial.print(abDualShock[4]);
-                SerSerial.print(abDualShock[5]);
-                SerSerial.print(abDualShock[6]);
+                // SerSerial.print(abDualShock[0]);
+                // SerSerial.print(abDualShock[1]);
+                // SerSerial.print(abDualShock[2]);
+                // SerSerial.print(abDualShock[3]);
+                // SerSerial.print(abDualShock[4]);
+                // SerSerial.print(abDualShock[5]);
+                // SerSerial.print(abDualShock[6]);
 
                 // Lets check the checksum...to always be zero =)
                 if (abDualShock[0] == 0 ) {
 
                         wButtons = abDualShock[2];
+
+                        SerSerial.print(wButtons);
 
                         // In an analog mode so should be OK...
                         g_wSerialErrorCnt = 0; // clear out error count...
@@ -275,37 +277,32 @@ void receiveData(int howMany)
                                 //Translate mode
                                 if (ButtonPressed(SERB_L1)) {// L1 Button Test
                                         SerSerial.print("L1");
-                                        // MSound( 1, 50, 2000);
+                                        // MSound(SOUND_PIN, 1, 50, 2000); //sound SOUND_PIN, [50\4000]
                                         if (ControlMode != TRANSLATEMODE )
                                                 ControlMode = TRANSLATEMODE;
                                         else {
-  #ifdef OPT_SINGLELEG
-                                                if (g_InControlState.SelectedLeg == 255)
+                                                if (g_InControlState.SelectedLeg==255)
                                                         ControlMode = WALKMODE;
                                                 else
-  #endif
-                                                ControlMode = SINGLELEGMODE;
+                                                        ControlMode = SINGLELEGMODE;
                                         }
                                 }
 
                                 //Rotate mode
                                 if (ButtonPressed(SERB_L2)) { // L2 Button Test
                                         SerSerial.print("L2");
-                                        // MSound( 1, 50, 2000);
+                                        // MSound(SOUND_PIN, 1, 50, 2000); //sound SOUND_PIN, [50\4000]
                                         if (ControlMode != ROTATEMODE)
                                                 ControlMode = ROTATEMODE;
                                         else {
-  #ifdef OPT_SINGLELEG
                                                 if (g_InControlState.SelectedLeg == 255)
                                                         ControlMode = WALKMODE;
                                                 else
-  #endif
-                                                ControlMode = SINGLELEGMODE;
+                                                        ControlMode = SINGLELEGMODE;
                                         }
                                 }
 
                                 //Single leg mode fNO
-  #ifdef OPT_SINGLELEG
                                 if (ButtonPressed(SERB_CIRCLE)) {// O - Circle Button Test
                                         SerSerial.print("CIRCLE");
                                         if (abs(g_InControlState.TravelLength.x) < cTravelDeadZone && abs(g_InControlState.TravelLength.z) < cTravelDeadZone
@@ -321,7 +318,6 @@ void receiveData(int howMany)
                                                 }
                                         }
                                 }
-  #endif
   #ifdef OPT_GPPLAYER
                                 // GP Player Mode X
                                 if (ButtonPressed(SERB_CROSS)) { // X - Cross Button Test
@@ -474,16 +470,15 @@ void receiveData(int howMany)
                                 }
 
                                 //[Single leg functions]
-  #ifdef OPT_SINGLELEG
                                 if (ControlMode == SINGLELEGMODE) {
                                         //Switch leg for single leg control
                                         if (ButtonPressed(SERB_SELECT)) { // Select Button Test
                                                 SerSerial.print("SELECT");
                                                 // MSound(1, 50, 2000);
-                                                if (g_InControlState.SelectedLeg < (CNT_LEGS - 1))
-                                                        g_InControlState.SelectedLeg = g_InControlState.SelectedLeg + 1;
+                                                if (g_InControlState.SelectedLeg<5)
+                                                    g_InControlState.SelectedLeg = g_InControlState.SelectedLeg+1;
                                                 else
-                                                        g_InControlState.SelectedLeg = 0;
+                                                    g_InControlState.SelectedLeg=0;
                                         }
 
                                         g_InControlState.SLLeg.x = (abDualShock[SER_LX] - 128) / 2; //Left Stick Right/Left
@@ -497,7 +492,6 @@ void receiveData(int howMany)
                                                 g_InControlState.fSLHold = !g_InControlState.fSLHold;
                                         }
                                 }
-  #endif
   #ifdef OPT_GPPLAYER
                                 //[GPPlayer functions]
                                 if (ControlMode == GPPLAYERMODE) {

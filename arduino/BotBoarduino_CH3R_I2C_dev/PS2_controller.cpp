@@ -8,20 +8,50 @@
 //Programmer: Jeroen Janssen (aka Xan)
 //             Kurt Eckhardt (aka KurtE) - converted to c ported to Arduino...
 //
-//Hardware setup: PS2 version
+//Hardware setup: Serial version - This contoll input, uses the same format of input as the old Powerpod serial test program.
+// Obviously it can be hacked up to almost any format
 //
-//NEW IN V1.0
-//- First Release
+//NEW IN V1.1
+//  - added speaker constant
+//  - added variable for number of gaits in code
+//  - Changed BodyRot to 1 decimal percision
+//  - Added variable Center Point of Rotation for the body
 //
-//Walk method 1:
-//- Left StickWalk/Strafe
-//- Right StickRotate
+//  Walk method 1:
+//  - Left Stick  Walk/Strafe
+//  - Right Stick Rotate
 //
-//Walk method 2:
-//- Left StickDisable
-//- Right StickWalk/Rotate
+//  Walk method 2:
+//  - Left Stick  Disable
+//  - Right Stick Walk/Rotate
 //
 //
+//
+// Packet format:
+// DualShock(0) : Checksum of other byte
+// DualShock(1)
+//   bit7 - Left Button test
+//   bit6 - Down Button test
+//   bit5 - Right Button test
+//   bit4 - Up Button test
+//   bit3 - Start Button test
+//   bit2 - R3 Button test (Horn)
+//   bit1 - L3 Button test
+//   bit0 - Select Button test
+// DualShock(2)
+//  bit7 - Square Button test
+//  bit6 - Cross Button test
+//  bit5 - Circle Button test
+//  bit4 - Triangle Button test
+//  bit3 - R1 Button test
+//  bit2 - L1 Button test
+//  bit1 - R2 Button test
+//  bit0 - L2 Button test
+// DualShock(3) - Right stick Left/right
+// DualShock(4) - Right Stick Up/Down
+// DualShock(5) - Left Stick Left/right
+// DualShock(6) - Left Stick Up/Down
+// Note: The actual usages are from PS2 control
 //PS2 CONTROLS:
 //[Common Controls]
 //- StartTurn on/off the bot
@@ -60,8 +90,8 @@
 //- R2Hold/release leg position
 //
 //[GP Player Controls]
-//- selectSwitch Sequences
-//- R2Start Sequence
+//- select Switch Sequences
+//- R2 Start Sequence
 //
 //====================================================================
 // [Include files]

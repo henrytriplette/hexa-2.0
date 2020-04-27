@@ -155,8 +155,8 @@ export class HERAJoystick {
 
             onUpdate:function() {
               // Display values
-              jQuery('#rightValueX').html((window.controllerAxis.right.x).toFixed());
-              jQuery('#rightValueY').html((window.controllerAxis.right.y).toFixed());
+              jQuery('#rightValueX').html(window.controllerAxis.right.x); // .toFixed());
+              jQuery('#rightValueY').html(window.controllerAxis.right.y); // .toFixed());
             },
 
             onComplete:function() {

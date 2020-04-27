@@ -45,8 +45,8 @@ def handle_message(message):
 def handle_client_connected(json):
     print('client_connected: ' + str(json))
 
-    utility.loadAndSendContent('resources/speech/lines.json', 'loadSpeech')
-    utility.loadAndSendFiles('resources/audio/', 'loadAudio')
+    utility.loadAndSendContent(os.path.dirname(__file__) + '/resources/speech/lines.json', 'loadSpeech')
+    utility.loadAndSendFiles(os.path.dirname(__file__) + '/resources/audio/', 'loadAudio')
 
 @socketio.on('shoutdown', namespace='/hera')
 def handle_shoutdown(message):

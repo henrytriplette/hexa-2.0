@@ -142,10 +142,10 @@
 #define SERB_CROSS       15    // bit6 - Cross Button test
 #define SERB_SQUARE      16    // bit7 - Square Button test
 
-#define  SER_RX          6             // DualShock(3) - Right stick Left/right
-#define  SER_RY          5            // DualShock(4) - Right Stick Up/Down
-#define  SER_LX          4            // DualShock(5) - Left Stick Left/right
-#define  SER_LY          3            // DualShock(6) - Left Stick Up/Down
+#define  SER_RX          7 // 6             // DualShock(3) - Right stick Left/right
+#define  SER_RY          6 // 5            // DualShock(4) - Right Stick Up/Down
+#define  SER_LX          5 // 4            // DualShock(5) - Left Stick Left/right
+#define  SER_LY          4 // 3            // DualShock(6) - Left Stick Up/Down
 
 #define cTravelDeadZone 4      //The deadzone for the analog input from the remote
 #define  MAXPS2ERRORCNT  5     // How many times through the loop will we go before shutting off robot?
@@ -228,7 +228,7 @@ void InputController::ControlInput(void)
 
 void receiveData(int howMany)
 {
-        byte abDualShock[7]; // we will to receive 7 bytes of data with the first byte being the checksum
+        byte abDualShock[8]; // we will to receive 7 bytes of data with the first byte being the checksum
         unsigned long ulLastChar;
         boolean fAdjustLegPositions = false;
         word wButtons;
@@ -239,22 +239,37 @@ void receiveData(int howMany)
                 for (int i = 0; i < howMany; i++) {
                         abDualShock[i] = Wire.read(); // receive byte as a character
                         // SerSerial.println(abDualShock[i]);
+                        // SerSerial.print('\n');
                 }
 
+                // Serial Debug
                 // SerSerial.print(abDualShock[0]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[1]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[2]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[3]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[4]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[5]);
+                // SerSerial.print('\n');
                 // SerSerial.print(abDualShock[6]);
+                // SerSerial.print('\n');
+                // SerSerial.print(abDualShock[7]);
+                // SerSerial.print('\n');
+                // SerSerial.print(abDualShock[8]);
+                // SerSerial.print('\n');
+                // SerSerial.print(abDualShock[9]);
+                // SerSerial.print('\n\n');
 
                 // Lets check the checksum...to always be zero =)
                 if (abDualShock[0] == 0 ) {
 
-                        wButtons = abDualShock[2];
+                        wButtons = abDualShock[3]; // Skip the first byte.
 
-                        SerSerial.print(wButtons);
+                        // SerSerial.print(wButtons);
 
                         // In an analog mode so should be OK...
                         g_wSerialErrorCnt = 0; // clear out error count...

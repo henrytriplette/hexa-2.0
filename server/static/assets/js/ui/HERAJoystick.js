@@ -115,8 +115,13 @@ export class HERAJoystick {
 
             onUpdate:function() {
               // Display values
-              jQuery('#leftValueX').html(window.controllerAxis.left.x);
-              jQuery('#leftValueY').html(window.controllerAxis.left.y);
+              if (window.controllerAxis.left.x != undefined) {
+                jQuery('#rightValueX').html((window.controllerAxis.left.x).toFixed());
+              }
+
+              if (window.controllerAxis.left.y != undefined) {
+                jQuery('#rightValueY').html((window.controllerAxis.left.y).toFixed());
+              }
             },
 
             onComplete:function() {
@@ -155,8 +160,14 @@ export class HERAJoystick {
 
             onUpdate:function() {
               // Display values
-              jQuery('#rightValueX').html(window.controllerAxis.right.x); // .toFixed());
-              jQuery('#rightValueY').html(window.controllerAxis.right.y); // .toFixed());
+              if (window.controllerAxis.right.x != undefined) {
+                jQuery('#rightValueX').html((window.controllerAxis.right.x).toFixed());
+              }
+
+              if (window.controllerAxis.right.y != undefined) {
+                jQuery('#rightValueY').html((window.controllerAxis.right.y).toFixed());
+              }
+
             },
 
             onComplete:function() {

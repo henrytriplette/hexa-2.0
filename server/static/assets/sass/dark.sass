@@ -1,66 +1,73 @@
-$primary-color: #e2001c
-$color_black: #000000
-$color_light_black: #666
-$color_grey: #333
+$primary: #e2001c
+$black: #000000
+$light_black: #666
+$grey: #333
+$white: #ffffff
 
 .darkTheme
+  background: $grey
   -webkit-transition: all 0.2s ease
   -moz-transition: all 0.2s ease
   -ms-transition: all 0.2s ease
   -o-transition: all 0.2s ease
 
   .uk-background-primary
-    background-color: $primary-color
+    background-color: $primary
 
   .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6,
   .uk-heading-2xlarge, .uk-heading-large,
   .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge,
   h1, h2, h3, h4, h5, h6
-    color: #FFF
+    color: $white
+
+  .uk-button-primary
+    background: $primary
+    color: $white
 
   #content
-    color: $primary-color
-    background: linear-gradient(90deg, $color_light_black 1.85vh, transparent 1%) center, linear-gradient($color_light_black 1.85vh, transparent 1%) center, $color_grey
-    background-size: 2.04vh 2.04vh
-
+    color: $primary
+    background: $grey
 
   footer
-    color: #505050
+    color: $white
     background: rgba(#7c7c7c, 0.5)
 
   .uk-hr, hr
-    border-top: 1px solid #505050
+    border-top: 1px solid $light_black
 
   .uk-link, a
-    color: $primary-color
+    color: $primary
 
   .uk-tab>.uk-active>a,
   .uk-button-default,
   .livecam-container
-    color: #FFF
-    border-color: $primary-color
+    color: $white
+    border-color: $primary
 
   .uk-button-text,
   .uk-close
-    color: #FFF
+    color: $white
+
+  .uk-modal-close-full
+    background: $primary
 
   .uk-card-default
     background: #222
-    color: #FFF
+    color: $white
 
   #overlay,
   .joystick-thumb
-    border-color: $primary-color
+    border-color: $primary
 
   .uk-badge
-    background: $primary-color
+    background: $primary
 
   .cursor--small
-    background: $primary-color
+    background: $primary
 
   .nipple .front
     background: #000 !important
-    border: 5px solid $primary-color
+    border: 5px solid $primary
     opacity: 0.6 !important
 
   .nipple .back
@@ -71,8 +78,21 @@ $color_grey: #333
 
   .uk-notification-message
     background: #222
-    color: $primary-color
-    border: 1px solid $primary-color
+    color: $primary
+    border: 1px solid $primary
 
   .uk-form-label
-    color: #FFF
+    color: $white
+
+  // inputs
+  .uk-input,
+  .uk-select,
+  .uk-textarea
+    background: $grey
+    color: $white
+
+  .uk-modal-dialog,
+  .uk-modal-header,
+  .uk-modal-footer
+    background: $light_black
+    color: $white

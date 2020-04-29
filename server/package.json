@@ -1,0 +1,25 @@
+{
+  "name": "hera",
+  "version": "0.0.0",
+  "description": "Hi. I'm Hera",
+  "author": "Henry Triplette",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "Hera",
+    "hexapod"
+  ],
+  "homepage": "https://github.com/henrytriplette/hexa-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrytriplette/hexa-2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/henrytriplette/hexa-2.0/issues"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  },
+  "scripts": {
+    "css": "sass --watch static/assets/sass:static/assets/css --style compressed"
+  }
+}

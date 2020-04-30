@@ -24,7 +24,7 @@
 #include <Arduino.h>
 #else
 #endif
-#include <PS2X_lib.h>
+// #include <PS2X_lib.h>
 #include <pins_arduino.h>
 #include <SoftwareSerial.h>
 #include "Hex_globals.h"
@@ -507,7 +507,7 @@ void loop(void)
 
                         // if it is less, use the last cycle time...
                         //Wait for previous commands to be completed while walking
-                        wDelayTime = (min(max ((PrevServoMoveTime - CycleTime), 1), (word)NomGaitSpeed));
+                        wDelayTime = (min(max ((PrevServoMoveTime - CycleTime), 1), NomGaitSpeed));
                         delay (wDelayTime);
                 }
 
@@ -544,23 +544,6 @@ void loop(void)
                 g_InControlState.fPrev_HexOn = 1;
         else
                 g_InControlState.fPrev_HexOn = 0;
-
-        // // Test the beeper
-        // static unsigned long proximityStartMillis;
-        // if (proximityStartMillis > 0) {
-        //         if (millis() - proximityStartMillis > 1000) { // every 1000 msec
-        //                 int distCm = sonar.getDistance();
-        //                 if (distCm < 200) {
-        //                         int durMillis = 1000;
-        //                         int freq = (1 - (distCm/180.) * 1000) + 1000;
-        //                         MSound(SOUND_PIN, 1, 45, freq);
-        //                         proximityStartMillis = millis();
-        //                 }
-        //         }
-        // }
-        // else {
-        //         proximityStartMillis = millis();
-        // }
 }
 
 
@@ -1227,7 +1210,7 @@ void LegIK (short IKFeetPosX, short IKFeetPosY, short IKFeetPosZ, byte LegIKLegN
 #endif
 
         //Set the Solution quality
-        if(IKSW2 < (unsigned long)((byte)pgm_read_byte(&cFemurLength[LegIKLegNr])+(byte)pgm_read_byte(&cTibiaLength[LegIKLegNr])-30)*c2DEC)
+        if(IKSW2 < ((byte)pgm_read_byte(&cFemurLength[LegIKLegNr])+(byte)pgm_read_byte(&cTibiaLength[LegIKLegNr])-30)*c2DEC)
                 IKSolution = 1;
         else
         {
@@ -1352,11 +1335,11 @@ boolean TerminalMonitor(void)
         }
 
         // First check to see if there is any characters to process.
-        if ((ich = DBGSerial.available())) {
+        if (ich = DBGSerial.available()) {
                 ich = 0;
                 // For now assume we receive a packet of data from serial monitor, as the user has
                 // to click the send button...
-                for (ich=0; ich < (int)sizeof(szCmdLine); ich++) {
+                for (ich=0; ich < sizeof(szCmdLine); ich++) {
                         ch = DBGSerial.read(); // get the next character
                         if ((ch == -1) || ((ch >= 10) && (ch <= 15)))
                                 break;

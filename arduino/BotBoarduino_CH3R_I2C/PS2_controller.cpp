@@ -586,24 +586,6 @@ void receiveData(int howMany)
                         //Calculate g_InControlState.BodyPos.y
                         g_InControlState.BodyPos.y = min(max(g_BodyYOffset + g_BodyYShift,  0), MAX_BODY_Y);
 
-#ifdef OPT_DYNAMIC_ADJUST_LEGS
-                        if (sLegInitXZAdjust || sLegInitAngleAdjust) {
-                                // User asked for manual leg adjustment - only do when we have finished any previous adjustment
-
-                                if (!g_InControlState.ForceGaitStepCnt) {
-                                        if (sLegInitXZAdjust)
-                                                g_fDynamicLegXZLength = true;
-
-                                        sLegInitXZAdjust += GetLegsXZLength(); // Add on current length to our adjustment...
-                                        // Handle maybe change angles...
-                                        if (sLegInitAngleAdjust)
-                                                RotateLegInitAngles(sLegInitAngleAdjust);
-                                        // Give system time to process previous calls
-                                        AdjustLegPositions(sLegInitXZAdjust);
-                                }
-                        }
-#endif
-
                         if (fAdjustLegPositions)
                                 // AdjustLegPositionsToBodyHeight();    // Put main workings into main program file
 
@@ -637,12 +619,9 @@ void PS2TurnRobotOff(void)
         g_InControlState.BodyRot1.z = 0;
         g_InControlState.TravelLength.x = 0;
         g_InControlState.TravelLength.z = 0;
-        g_InControlState.TravelLength.y = 0;
-        g_BodyYOffset = 0;
-        g_BodyYShift = 0;
-#ifdef OPT_SINGLELEG
-        g_InControlState.SelectedLeg = 255;
-#endif
+        // g_InControlState.TravelLength.y = 0;
+        // g_BodyYOffset = 0;
+        // g_BodyYShift = 0;
+        // g_InControlState.SelectedLeg = 255;
         g_InControlState.fHexOn = 0;
-        // AdjustLegPositionsToBodyHeight(); // Put main workings into main program file
 }

@@ -116,11 +116,11 @@ export class HERAJoystick {
             onUpdate:function() {
               // Display values
               if (window.controllerAxis.left.x != undefined) {
-                jQuery('#leftValueX').html((window.controllerAxis.left.x).toFixed());
+                jQuery('#leftValueX').html(parseFloat(window.controllerAxis.left.x).toFixed());
               }
 
               if (window.controllerAxis.left.y != undefined) {
-                jQuery('#leftValueY').html((window.controllerAxis.left.y).toFixed());
+                jQuery('#leftValueY').html(parseFloat(window.controllerAxis.left.y).toFixed());
               }
             },
 
@@ -161,11 +161,11 @@ export class HERAJoystick {
             onUpdate:function() {
               // Display values
               if (window.controllerAxis.right.x != undefined) {
-                jQuery('#rightValueX').html((window.controllerAxis.right.x).toFixed());
+                jQuery('#rightValueX').html(parseFloat(window.controllerAxis.right.x).toFixed());
               }
 
               if (window.controllerAxis.right.y != undefined) {
-                jQuery('#rightValueY').html((window.controllerAxis.right.y).toFixed());
+                jQuery('#rightValueY').html(parseFloat(window.controllerAxis.right.y).toFixed());
               }
 
             },

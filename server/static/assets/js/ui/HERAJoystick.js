@@ -116,11 +116,11 @@ export class HERAJoystick {
             onUpdate:function() {
               // Display values
               if (window.controllerAxis.left.x != undefined) {
-                jQuery('#rightValueX').html((window.controllerAxis.left.x).toFixed());
+                jQuery('#leftValueX').html((window.controllerAxis.left.x).toFixed());
               }
 
               if (window.controllerAxis.left.y != undefined) {
-                jQuery('#rightValueY').html((window.controllerAxis.left.y).toFixed());
+                jQuery('#leftValueY').html((window.controllerAxis.left.y).toFixed());
               }
             },
 

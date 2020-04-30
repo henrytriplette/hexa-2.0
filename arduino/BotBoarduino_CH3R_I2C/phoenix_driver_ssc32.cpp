@@ -56,7 +56,7 @@ void ServoDriver::Init(void) {
 
         // Lets do the check for GP Enabled here...
 #ifdef OPT_GPPLAYER
-        char abVer[40];  // give a nice large buffer.
+        char abVer[40];    // give a nice large buffer.
         byte cbRead;
 
         _fGPEnabled = false; // starts off assuming that it is not enabled...
@@ -82,7 +82,7 @@ void ServoDriver::Init(void) {
         }
         DBGSerial.print("\n\r");
 #endif
-        if ((cbRead > 3) && (abVer[cbRead-3]=='G') && (abVer[cbRead-2]=='P') && (abVer[cbRead-1]==13))
+        if ((cbRead > 3) && (abVer[cbRead - 3] == 'G') && (abVer[cbRead - 2] == 'P') && (abVer[cbRead - 1] == 13))
                 _fGPEnabled = true; // starts off assuming that it is not enabled...
         else
                 MSound (SOUND_PIN, 2, 40, 2500, 40, 2500);
@@ -106,7 +106,7 @@ boolean ServoDriver::FIsGPSeqDefined(uint8_t iSeq)
 
         // See if we can see if this sequence is defined
         SSCSerial.print("EER -");
-        SSCSerial.print(iSeq*2, DEC);
+        SSCSerial.print(iSeq * 2, DEC);
         SSCSerial.println(";2");
         if ((SSCRead((byte*)&wGPSeqPtr, sizeof(wGPSeqPtr), 1000, 0xffff) == sizeof(wGPSeqPtr)) && (wGPSeqPtr != 0)  && (wGPSeqPtr != 0xffff)) {
                 return true;
@@ -146,7 +146,7 @@ void ServoDriver::GPPlayer(void)
                 //Wait for GPPlayer to complete sequence
                 do {
                         SSCSerial.print("QPL0\r");
-                        cbRead = SSCRead((byte*)abStat, sizeof(abStat), 10000, (word)-1); //    [GPStatSeq, GPStatFromStep, GPStatToStep, GPStatTime]
+                        cbRead = SSCRead((byte*)abStat, sizeof(abStat), 10000, (word) - 1); //    [GPStatSeq, GPStatFromStep, GPStatToStep, GPStatTime]
                         delay(20);
                 }
                 while ((cbRead == sizeof(abStat)) && ((abStat[0] != 255) || (abStat[1] != 0) || (abStat[2] != 0) || (abStat[3] != 0)));
@@ -179,11 +179,11 @@ void ServoDriver::OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short 
 void ServoDriver::OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short sFemurAngle1, short sTibiaAngle1)
 #endif
 {
-        word wCoxaSSCV;     // Coxa value in SSC units
-        word wFemurSSCV;     //
-        word wTibiaSSCV;     //
+        word wCoxaSSCV;       // Coxa value in SSC units
+        word wFemurSSCV;       //
+        word wTibiaSSCV;       //
 #ifdef c4DOF
-        word wTarsSSCV;     //
+        word wTarsSSCV;       //
 #endif
 
         //Update Right Legs
@@ -302,10 +302,10 @@ void ServoDriver::SSCForwarder(void)
         MSound(SOUND_PIN, 1, 1000, 2000); //sound SOUND_PIN, [50\4000]
         delay(2000);
         int sChar;
-        int sPrevChar;
+        int sPrevChar = 0;
         DBGSerial.println("SSC Forwarder mode - Enter $<cr> to exit");
 
-        while (digitalRead(PS2_CMD)) {
+        while(digitalRead(PS2_CMD)) {
                 if ((sChar = DBGSerial.read()) != -1) {
                         SSCSerial.write(sChar & 0xff);
                         if (((sChar == '\n') || (sChar == '\r')) && (sPrevChar == '$'))

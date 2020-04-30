@@ -53,7 +53,7 @@ static const byte GetACos[] PROGMEM = {
         59,59,58,58,58,57,57,57,56,56,55,55,55,54,54,53,53,53,52,52,51,51,51,50,50,49,49,48,48,47,47,47,
         46,46,45,45,44,44,43,43,42,42,41,41,40,40,39,39,38,37,37,36,36,35,34,34,33,33,32,31,31,30,29,28,
         28,27,26,25,24,23,23,23,23,22,22,22,22,21,21,21,21,20,20,20,19,19,19,19,18,18,18,17,17,17,17,16,
-        16,16,15,15,15,14,14,13,13,13,12,12,11,11,10,10,9,9,8,7,6,6,5,3,0 };            //
+        16,16,15,15,15,14,14,13,13,13,12,12,11,11,10,10,9,9,8,7,6,6,5,3,0 };//
 
 //Sin table 90 deg, persision 0.5 deg [180 values]
 static const word GetSin[] PROGMEM = {0, 87, 174, 261, 348, 436, 523, 610, 697, 784, 871, 958, 1045, 1132, 1218, 1305, 1391, 1478, 1564,
@@ -313,7 +313,7 @@ void setup(){
                 g_ServoDriver.SSCForwarder();
 
         //Checks to see if our Servo Driver support a GP Player
-//    DBGSerial.write("Program Start\n\r");
+        //    DBGSerial.write("Program Start\n\r");
         // debug stuff
         delay(10);
 
@@ -507,7 +507,7 @@ void loop(void)
 
                         // if it is less, use the last cycle time...
                         //Wait for previous commands to be completed while walking
-                        wDelayTime = (min(max ((PrevServoMoveTime - CycleTime), 1), NomGaitSpeed));
+                        wDelayTime = (min(max ((PrevServoMoveTime - CycleTime), 1), (word)NomGaitSpeed));
                         delay (wDelayTime);
                 }
 
@@ -544,6 +544,23 @@ void loop(void)
                 g_InControlState.fPrev_HexOn = 1;
         else
                 g_InControlState.fPrev_HexOn = 0;
+
+        // // Test the beeper
+        // static unsigned long proximityStartMillis;
+        // if (proximityStartMillis > 0) {
+        //         if (millis() - proximityStartMillis > 1000) { // every 1000 msec
+        //                 int distCm = sonar.getDistance();
+        //                 if (distCm < 200) {
+        //                         int durMillis = 1000;
+        //                         int freq = (1 - (distCm/180.) * 1000) + 1000;
+        //                         MSound(SOUND_PIN, 1, 45, freq);
+        //                         proximityStartMillis = millis();
+        //                 }
+        //         }
+        // }
+        // else {
+        //         proximityStartMillis = millis();
+        // }
 }
 
 
@@ -571,7 +588,7 @@ void StartUpdateServos()
 //--------------------------------------------------------------------
 void WriteOutputs(void)
 {
- #ifdef cEyesPin
+#ifdef cEyesPin
         digitalWrite(cEyesPin, Eyes);
 #endif
 }
@@ -1124,7 +1141,7 @@ void LegIK (short IKFeetPosX, short IKFeetPosY, short IKFeetPosZ, byte LegIKLegN
         unsigned long IKA24;           //Angle of the line S>W with respect to the femur in radians, decimals = 4
         short IKFeetPosXZ;           //Diagonal direction from Input X and Z
 #ifdef c4DOF
-// these were shorts...
+        // these were shorts...
         long TarsOffsetXZ;           //Vector value \ ;
         long TarsOffsetY;            //Vector value / The 2 DOF IK calcs (femur and tibia) are based upon these vectors
         long TarsToGroundAngle1;           //Angle between tars and ground. Note: the angle are 0 when the tars are perpendicular to the ground
@@ -1210,7 +1227,7 @@ void LegIK (short IKFeetPosX, short IKFeetPosY, short IKFeetPosZ, byte LegIKLegN
 #endif
 
         //Set the Solution quality
-        if(IKSW2 < ((byte)pgm_read_byte(&cFemurLength[LegIKLegNr])+(byte)pgm_read_byte(&cTibiaLength[LegIKLegNr])-30)*c2DEC)
+        if(IKSW2 < (unsigned long)((byte)pgm_read_byte(&cFemurLength[LegIKLegNr])+(byte)pgm_read_byte(&cTibiaLength[LegIKLegNr])-30)*c2DEC)
                 IKSolution = 1;
         else
         {
@@ -1335,11 +1352,11 @@ boolean TerminalMonitor(void)
         }
 
         // First check to see if there is any characters to process.
-        if (ich = DBGSerial.available()) {
+        if ((ich = DBGSerial.available())) {
                 ich = 0;
                 // For now assume we receive a packet of data from serial monitor, as the user has
                 // to click the send button...
-                for (ich=0; ich < sizeof(szCmdLine); ich++) {
+                for (ich=0; ich < (int)sizeof(szCmdLine); ich++) {
                         ch = DBGSerial.read(); // get the next character
                         if ((ch == -1) || ((ch >= 10) && (ch <= 15)))
                                 break;

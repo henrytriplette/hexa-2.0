@@ -39,30 +39,30 @@ typedef struct _Coord3D {
 //      requested.
 //==============================================================================
 typedef struct _InControlState {
-        boolean fHexOn;       //Switch to turn on Phoenix
-        boolean fPrev_HexOn;      //Previous loop state
-//Body position
+        boolean fHexOn;     //Switch to turn on Phoenix
+        boolean fPrev_HexOn;    //Previous loop state
+        //Body position
         COORD3D BodyPos;
 
-//Body Inverse Kinematics
-        COORD3D BodyRot1;                   // X -Pitch, Y-Rotation, Z-Roll
+        //Body Inverse Kinematics
+        COORD3D BodyRot1;                  // X -Pitch, Y-Rotation, Z-Roll
 
-//[gait]
+        //[gait]
         byte GaitType;      //Gait type
 
-        short LegLiftHeight;      //Current Travel height
-        COORD3D TravelLength;                // X-Z or Length, Y is rotation.
+        short LegLiftHeight;    //Current Travel height
+        COORD3D TravelLength;               // X-Z or Length, Y is rotation.
 
-//[Single Leg Control]
+        //[Single Leg Control]
         byte SelectedLeg;
-        COORD3D SLLeg;                    //
-        boolean fSLHold;      //Single leg control mode
+        COORD3D SLLeg;                   //
+        boolean fSLHold;    //Single leg control mode
 
 
-//[Balance]
+        //[Balance]
         boolean BalanceMode;
 
-//[TIMING]
+        //[TIMING]
         byte InputTimeDelay;  //Delay that depends on the input to get the "sneaking" effect
         word SpeedControl;  //Adjustible Delay
 } INCONTROLSTATE;

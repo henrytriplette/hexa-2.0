@@ -66,7 +66,9 @@ o) Install dependencies
   ```
   Then bgin:
   ```
-  sudo apt-get install apache2 node.js npm pigpio git
+  curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+  sudo apt-get install nodejs
+  sudo apt-get install apache2 pigpio git
   ```
   To make sure it ran correctly, run
   ```
@@ -148,10 +150,41 @@ o) Install Flite for voice output and synthesis
   flite -voice slt "I'm now speaking kal's voice. By the way, please call me Dr. Hawking."
   ```
 
+o) Check python3 version
+  ```
+  python3 -V
+  ```
+
+o) Install gpiozero
+  ```
+  sudo apt install python3-gpiozero
+  ```
+
+o) Install pip and virtualenv
+  ```
+  sudo apt install python3-pip
+  sudo pip3 install virtualenv
+  ```
+
+o) Create virtualenv
+  ```
+  virtualenv -p python3 venv
+  ```
+
+o) Activate virtualenv
+  ```
+  source venv/bin/activate
+  ```
+
+  When the command completes, your current terminal program will be configured to use your virtual environment for activities related to Python 3. Given that, install the Python dependencies for your GPIO Zero project into your virtual environment:
+  ```
+  pip install -r requirements.txt
+  ```
+
 o) Install atlas for Snowboy Support
   Install dependencies:
   ```
-  sudo apt-get -y install python-pyaudio python3-pyaudio sox libmagic-dev libatlas-base-dev libsox-fmt-all python-pip
+  sudo apt-get -y install python-pyaudio python3-pyaudio sox libmagic-dev libatlas-base-dev libsox-fmt-all
   ```
   Install PortAudio’s Python bindings:
   ```

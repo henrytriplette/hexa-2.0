@@ -140,8 +140,8 @@
 #define cRRFemurMax1    750
 #define cRRTibiaMin1    -530
 #define cRRTibiaMax1    900
-#define cRRTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cRRTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cRRTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cRRTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 #define cRMCoxaMin1     -650      //Mechanical limits of the Right Middle Leg
 #define cRMCoxaMax1     650
@@ -149,8 +149,8 @@
 #define cRMFemurMax1    750
 #define cRMTibiaMin1    -530
 #define cRMTibiaMax1    900
-#define cRMTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cRMTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cRMTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cRMTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 #define cRFCoxaMin1     -650      //Mechanical limits of the Right Front Leg
 #define cRFCoxaMax1     650
@@ -158,8 +158,8 @@
 #define cRFFemurMax1    750
 #define cRFTibiaMin1    -530
 #define cRFTibiaMax1    900
-#define cRFTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cRFTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cRFTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cRFTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 #define cLRCoxaMin1     -650      //Mechanical limits of the Left Rear Leg
 #define cLRCoxaMax1     650
@@ -167,8 +167,8 @@
 #define cLRFemurMax1    750
 #define cLRTibiaMin1    -530
 #define cLRTibiaMax1    900
-#define cLRTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cLRTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cLRTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cLRTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 #define cLMCoxaMin1     -650      //Mechanical limits of the Left Middle Leg
 #define cLMCoxaMax1     650
@@ -176,8 +176,8 @@
 #define cLMFemurMax1    750
 #define cLMTibiaMin1    -530
 #define cLMTibiaMax1    900
-#define cLMTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cLMTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cLMTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cLMTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 #define cLFCoxaMin1     -650      //Mechanical limits of the Left Front Leg
 #define cLFCoxaMax1     650
@@ -185,8 +185,8 @@
 #define cLFFemurMax1    750
 #define cLFTibiaMin1    -530
 #define cLFTibiaMax1    900
-#define cLFTarsMin1     -1300	//4DOF ONLY - In theory the kinematics can reach about -160 deg
-#define cLFTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
+#define cLFTarsMin1     -1300 //4DOF ONLY - In theory the kinematics can reach about -160 deg
+#define cLFTarsMax1 500 //4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 //--------------------------------------------------------------------
 //[LEG DIMENSIONS]
@@ -196,35 +196,35 @@
 #define cXXTibiaLength    141
 #define cXXTarsLength     85    // 4DOF only...
 
-#define cRRCoxaLength     cXXCoxaLength	    //Right Rear leg
+#define cRRCoxaLength     cXXCoxaLength     //Right Rear leg
 #define cRRFemurLength    cXXFemurLength
 #define cRRTibiaLength    cXXTibiaLength
-#define cRRTarsLength	  cXXTarsLength	    //4DOF ONLY
+#define cRRTarsLength   cXXTarsLength     //4DOF ONLY
 
-#define cRMCoxaLength     cXXCoxaLength	    //Right middle leg
+#define cRMCoxaLength     cXXCoxaLength     //Right middle leg
 #define cRMFemurLength    cXXFemurLength
 #define cRMTibiaLength    cXXTibiaLength
-#define cRMTarsLength	  cXXTarsLength	    //4DOF ONLY
+#define cRMTarsLength   cXXTarsLength     //4DOF ONLY
 
-#define cRFCoxaLength     cXXCoxaLength	    //Rigth front leg
+#define cRFCoxaLength     cXXCoxaLength     //Rigth front leg
 #define cRFFemurLength    cXXFemurLength
 #define cRFTibiaLength    cXXTibiaLength
-#define cRFTarsLength	  cXXTarsLength    //4DOF ONLY
+#define cRFTarsLength   cXXTarsLength    //4DOF ONLY
 
-#define cLRCoxaLength     cXXCoxaLength	    //Left Rear leg
+#define cLRCoxaLength     cXXCoxaLength     //Left Rear leg
 #define cLRFemurLength    cXXFemurLength
 #define cLRTibiaLength    cXXTibiaLength
-#define cLRTarsLength	  cXXTarsLength    //4DOF ONLY
+#define cLRTarsLength   cXXTarsLength    //4DOF ONLY
 
-#define cLMCoxaLength     cXXCoxaLength	    //Left middle leg
+#define cLMCoxaLength     cXXCoxaLength     //Left middle leg
 #define cLMFemurLength    cXXFemurLength
 #define cLMTibiaLength    cXXTibiaLength
-#define cLMTarsLength	  cXXTarsLength	    //4DOF ONLY
+#define cLMTarsLength   cXXTarsLength     //4DOF ONLY
 
-#define cLFCoxaLength     cXXCoxaLength	    //Left front leg
+#define cLFCoxaLength     cXXCoxaLength     //Left front leg
 #define cLFFemurLength    cXXFemurLength
 #define cLFTibiaLength    cXXTibiaLength
-#define cLFTarsLength	  cXXTarsLength	    //4DOF ONLY
+#define cLFTarsLength   cXXTarsLength     //4DOF ONLY
 
 
 //--------------------------------------------------------------------
@@ -252,10 +252,10 @@
 
 //--------------------------------------------------------------------
 //[START POSITIONS FEET]
-#define cHexInitXZ	 80
+#define cHexInitXZ   80
 #define CHexInitXZCos60  40        // COS(60) = .5
 #define CHexInitXZSin60  69    // sin(60) = .866
-#define CHexInitY	80 //30
+#define CHexInitY 80 //30
 
 
 #define cRRInitPosX     CHexInitXZCos60      //Start positions of the Right Rear leg
@@ -283,8 +283,8 @@
 #define cLFInitPosZ     -CHexInitXZSin60
 //--------------------------------------------------------------------
 //[Tars factors used in formula to calc Tarsus angle relative to the ground]
-#define cTarsConst	720	//4DOF ONLY
-#define cTarsMulti	2	//4DOF ONLY
-#define cTarsFactorA	70	//4DOF ONLY
-#define cTarsFactorB	60	//4DOF ONLY
-#define cTarsFactorC	50	//4DOF ONLY
+#define cTarsConst  720 //4DOF ONLY
+#define cTarsMulti  2 //4DOF ONLY
+#define cTarsFactorA  70  //4DOF ONLY
+#define cTarsFactorB  60  //4DOF ONLY
+#define cTarsFactorC  50  //4DOF ONLY

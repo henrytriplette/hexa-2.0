@@ -17,44 +17,47 @@
 #endif
 
 class ServoDriver {
-  public:
-    void Init(void);
+public:
+void Init(void);
 
-    void GPSetSpeedMultiplyer(short);
+void GPSetSpeedMultiplyer(short);
 #ifdef OPT_GPPLAYER
-    inline boolean  FIsGPEnabled(void) {return _fGPEnabled;};
-    boolean         FIsGPSeqDefined(uint8_t iSeq);
-    inline boolean  FIsGPSeqActive(void) {return _fGPActive;};
-    void            GPStartSeq(uint8_t iSeq);
-    void            GPPlayer(void);
+inline boolean  FIsGPEnabled(void) {
+        return _fGPEnabled;
+};
+boolean         FIsGPSeqDefined(uint8_t iSeq);
+inline boolean  FIsGPSeqActive(void) {
+        return _fGPActive;
+};
+void            GPStartSeq(uint8_t iSeq);
+void            GPPlayer(void);
 #endif
-    void BeginServoUpdate(void);    // Start the update
+void BeginServoUpdate(void);        // Start the update
 #ifdef c4DOF
-    void OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short sFemurAngle1, short sTibiaAngle1, short sTarsAngle1);
+void OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short sFemurAngle1, short sTibiaAngle1, short sTarsAngle1);
 #else
-    void OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short sFemurAngle1, short sTibiaAngle1);
+void OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short sFemurAngle1, short sTibiaAngle1);
 #endif
-    void CommitServoDriver(word wMoveTime);
-    void FreeServos(void);
+void CommitServoDriver(word wMoveTime);
+void FreeServos(void);
 
 #ifdef OPT_FIND_SERVO_OFFSETS
-    void FindServoOffsets(void);  // Needs to be different depending on which driver
+void FindServoOffsets(void);      // Needs to be different depending on which driver
 #endif
-    // Optional code used to forward commands from debug terminal to SSC prot...
+// Optional code used to forward commands from debug terminal to SSC prot...
 #ifdef OPT_SSC_FORWARDER
-    void SSCForwarder(void);
+void SSCForwarder(void);
 #endif
 
-  private:
+private:
 
 #ifdef OPT_GPPLAYER
-    boolean _fGPEnabled;     // IS GP defined for this servo driver?
-    boolean _fGPActive;      // Is a sequence currently active - May change later when we integrate in sequence timing adjustment code
-    uint8_t    _iSeq;        // current sequence we are running
-    short    _sGPSM;        // Speed multiplier +-200 
+boolean _fGPEnabled;         // IS GP defined for this servo driver?
+boolean _fGPActive;          // Is a sequence currently active - May change later when we integrate in sequence timing adjustment code
+uint8_t _iSeq;               // current sequence we are running
+short _sGPSM;               // Speed multiplier +-200
 #endif
 
-} ;
+};
 
 #endif //_Servo_Driver_h_
-

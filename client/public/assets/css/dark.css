@@ -1,3 +1,9 @@
+.darkTheme {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
 .darkTheme .uk-background-primary {
   background-color: #e2001c;
 }
@@ -8,10 +14,13 @@
   color: #FFF;
 }
 .darkTheme #content {
-  background-color: #333;
+  color: #e2001c;
+  background: linear-gradient(90deg, #666 1.85vh, transparent 1%) center, linear-gradient(#666 1.85vh, transparent 1%) center, #333;
+  background-size: 2.04vh 2.04vh;
 }
 .darkTheme footer {
   color: #505050;
+  background: rgba(124, 124, 124, 0.5);
 }
 .darkTheme .uk-hr, .darkTheme hr {
   border-top: 1px solid #505050;
@@ -58,6 +67,9 @@
   background: #222;
   color: #e2001c;
   border: 1px solid #e2001c;
+}
+.darkTheme .uk-form-label {
+  color: #FFF;
 }
 
 /*# sourceMappingURL=dark.css.map */

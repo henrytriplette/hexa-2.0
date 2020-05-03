@@ -18,18 +18,18 @@
 #endif
 
 class InputController {
-  public:
-    void     Init(void);
-    void     ControlInput(void);
-    void     AllowControllerInterrupts(boolean fAllow);
+public:
+void     Init(void);
+void     ControlInput(void);
+void     AllowControllerInterrupts(boolean fAllow);
 
-  private:
-} ;
+private:
+};
 
 typedef struct _Coord3D {
-    long      x;
-    long      y;
-    long      z;
+        long x;
+        long y;
+        long z;
 } COORD3D;
 
 
@@ -39,32 +39,32 @@ typedef struct _Coord3D {
 //      requested.
 //==============================================================================
 typedef struct _InControlState {
-     boolean		fHexOn;				//Switch to turn on Phoenix
-     boolean		fPrev_HexOn;			//Previous loop state
-//Body position
-     COORD3D        BodyPos;
+        boolean fHexOn;     //Switch to turn on Phoenix
+        boolean fPrev_HexOn;    //Previous loop state
+        //Body position
+        COORD3D BodyPos;
 
-//Body Inverse Kinematics
-     COORD3D        BodyRot1;               // X -Pitch, Y-Rotation, Z-Roll
+        //Body Inverse Kinematics
+        COORD3D BodyRot1;                  // X -Pitch, Y-Rotation, Z-Roll
 
-//[gait]
-     byte			GaitType;			//Gait type
+        //[gait]
+        byte GaitType;      //Gait type
 
-     short			LegLiftHeight;		//Current Travel height
-     COORD3D        TravelLength;            // X-Z or Length, Y is rotation.
+        short LegLiftHeight;    //Current Travel height
+        COORD3D TravelLength;               // X-Z or Length, Y is rotation.
 
-//[Single Leg Control]
-     byte			SelectedLeg;
-     COORD3D        SLLeg;                //
-     boolean		fSLHold;		 	//Single leg control mode
+        //[Single Leg Control]
+        byte SelectedLeg;
+        COORD3D SLLeg;                   //
+        boolean fSLHold;    //Single leg control mode
 
 
-//[Balance]
-     boolean        BalanceMode;
+        //[Balance]
+        boolean BalanceMode;
 
-//[TIMING]
-     byte			InputTimeDelay;	//Delay that depends on the input to get the "sneaking" effect
-     word			SpeedControl;	//Adjustible Delay
+        //[TIMING]
+        byte InputTimeDelay;  //Delay that depends on the input to get the "sneaking" effect
+        word SpeedControl;  //Adjustible Delay
 } INCONTROLSTATE;
 
 

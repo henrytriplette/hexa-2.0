@@ -193,7 +193,7 @@ void InputController::Init(void)
         // May need to init the Serial port here...
         SerSerial.begin(SERIAL_BAUD);
 
-        g_BodyYOffset = 0; // 0 - Devon wanted...
+        g_BodyYOffset = 65; // 0 - Devon wanted...
         g_BodyYShift = 0;
         g_wSerialErrorCnt = 0;  // error count
 
@@ -212,7 +212,8 @@ void InputController::Init(void)
 //==============================================================================
 void InputController::AllowControllerInterrupts(boolean fAllow)
 {
-// We don't need to do anything...
+  // We don't need to do anything...
+  (void)fAllow;
 }
 
 #define ButtonPressed(wMask) (wButtons == wMask)
@@ -221,10 +222,6 @@ void InputController::AllowControllerInterrupts(boolean fAllow)
 // This is The main code to input function to read inputs from the PS2 and then
 //process any commands.
 //==============================================================================
-#ifdef OPT_DYNAMIC_ADJUST_LEGS
-boolean g_fDynamicLegXZLength = false;  // Has the user dynamically adjusted the Leg XZ init pos (width)
-#endif
-
 void InputController::ControlInput(void)
 {
         delay(100);
@@ -619,9 +616,9 @@ void PS2TurnRobotOff(void)
         g_InControlState.BodyRot1.z = 0;
         g_InControlState.TravelLength.x = 0;
         g_InControlState.TravelLength.z = 0;
-        // g_InControlState.TravelLength.y = 0;
-        // g_BodyYOffset = 0;
-        // g_BodyYShift = 0;
-        // g_InControlState.SelectedLeg = 255;
+        g_InControlState.TravelLength.y = 0;
+        g_BodyYOffset = 64;
+        g_BodyYShift = 0;
+        g_InControlState.SelectedLeg = 255;
         g_InControlState.fHexOn = 0;
 }

@@ -23,9 +23,9 @@ export class HERAJoystick {
           'y': 128,
           'xTrim': 0,
           'yTrim': 0,
-          'xMax': 256,
+          'xMax': 255,
           'xMin': 0,
-          'yMax': 256,
+          'yMax': 255,
           'yMin': 0
         },
         right: {
@@ -33,9 +33,9 @@ export class HERAJoystick {
           'y': 128,
           'xTrim': 0,
           'yTrim': 0,
-          'xMax': 256,
+          'xMax': 255,
           'xMin': 0,
-          'yMax': 256,
+          'yMax': 255,
           'yMin': 0
         }
       }
@@ -44,7 +44,7 @@ export class HERAJoystick {
           zone: document.getElementById('leftJoystick'),
           mode: 'static',
           position: {left: '50%', top: '50%'},
-          size: 256,
+          size: 255,
           catchDistance: 150,
           color: 'white',
           restJoystick: true,
@@ -55,7 +55,7 @@ export class HERAJoystick {
           zone: document.getElementById('rightJoystick'),
           mode: 'static',
           position: {left: '50%', top: '50%'},
-          size: 256,
+          size: 255,
           catchDistance: 150,
           color: 'white',
           restJoystick: true,
@@ -95,8 +95,8 @@ export class HERAJoystick {
           var x = (parseFloat(Math.cos(data.angle.radian) * force) + window.controllerAxis.left.xTrim).toFixed(1);
           var y = (parseFloat(Math.sin(data.angle.radian) * force) + window.controllerAxis.left.yTrim).toFixed(1);
 
-          window.controllerAxis.left.x = (convertRange( x, [ -100, 100 ], [ 0, 256 ] )).toFixed();
-          window.controllerAxis.left.y = (convertRange( y, [ -100, 100 ], [ 0, 256 ] )).toFixed();
+          window.controllerAxis.left.x = (convertRange( x, [ -100, 100 ], [ 0, 255 ] )).toFixed();
+          window.controllerAxis.left.y = (convertRange( y, [ -100, 100 ], [ 0, 255 ] )).toFixed();
 
           // Display values
           jQuery('#leftValueX').html(window.controllerAxis.left.x);
@@ -141,8 +141,8 @@ export class HERAJoystick {
           var x = (parseFloat(Math.cos(data.angle.radian) * force) + window.controllerAxis.right.xTrim).toFixed(1);
           var y = (parseFloat(Math.sin(data.angle.radian) * force) + window.controllerAxis.right.yTrim).toFixed(1);
 
-          window.controllerAxis.right.x = (convertRange( x, [ -100, 100 ], [ 0, 256 ] )).toFixed(0);
-          window.controllerAxis.right.y = (convertRange( y, [ -100, 100 ], [ 0, 256 ] )).toFixed(0);
+          window.controllerAxis.right.x = (convertRange( x, [ -100, 100 ], [ 0, 255 ] )).toFixed(0);
+          window.controllerAxis.right.y = (convertRange( y, [ -100, 100 ], [ 0, 255 ] )).toFixed(0);
 
           // Display values
           jQuery('#rightValueX').html(window.controllerAxis.right.x);

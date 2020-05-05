@@ -8,7 +8,7 @@ MarkupSafe==1.1.0
 python-engineio
 python-socketio
 six==1.11.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 eventlet==0.25.2
 gpiozero==1.5.1
 pigpio==1.46
